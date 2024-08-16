@@ -1,22 +1,10 @@
 import React from 'react';
+import Header from '../component/Header';
 
 const SignUp: React.FC = () => {
     return (
         <>
-            <div className="container-fluid bg-breadcrumb">
-                <div className="container text-center py-5" style={{ maxWidth: '900px' }}>
-                    <h3 className="text-white display-3 mb-4">404 Page</h3>
-                    <ol className="breadcrumb justify-content-center mb-0">
-                        <li className="breadcrumb-item">
-                            <a href="index.html">Home</a>
-                        </li>
-                        <li className="breadcrumb-item">
-                            <a href="#">Pages</a>
-                        </li>
-                        <li className="breadcrumb-item active text-white">404 Page</li>
-                    </ol>
-                </div>
-            </div>
+            <Header title="Sign Up Page" path="SignUp" />
 
             <div className="container h-100">
                 <div className="row d-flex justify-content-center align-items-center h-100">

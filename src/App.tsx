@@ -7,6 +7,7 @@ import PageNotFound from './page/404_Page';
 import Login from './page/Login';
 import SignUp from './page/SignUp';
 import Contact from './page/Contact';
+import BookingForm from './page/Booking';
 
 
 const router = createBrowserRouter([
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
       {
         path: "contact",
         element: <Contact/>
+      },
+      {
+        path: "booking",
+        element: <BookingForm/>
       },
       {
         path: "*",

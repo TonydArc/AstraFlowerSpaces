@@ -1,20 +1,10 @@
 import React from 'react';
+import Header from '../component/Header';
 
 const Contact: React.FC = () => {
   return (
     <>
-      {/* Header Start */}
-      <div className="container-fluid bg-breadcrumb">
-        <div className="container text-center py-5" style={{ maxWidth: '900px' }}>
-          <h3 className="text-white display-3 mb-4">Contact Us</h3>
-          <ol className="breadcrumb justify-content-center mb-0">
-            <li className="breadcrumb-item"><a href="index.html">Home</a></li>
-            <li className="breadcrumb-item"><a href="#">Pages</a></li>
-            <li className="breadcrumb-item active text-white">Contact</li>
-          </ol>
-        </div>
-      </div>
-      {/* Header End */}
+      <Header title="Contact Us" path="Contact" />
 
       {/* Contact Start */}
       <div className="container-fluid contact bg-light py-5">
