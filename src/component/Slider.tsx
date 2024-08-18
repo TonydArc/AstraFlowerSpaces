@@ -11,7 +11,7 @@ const Slider: React.FC = () => {
         </ol>
         <div className="carousel-inner" role="listbox">
           <div className="carousel-item active">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS90mMB1irCBf8vQ4Qv_RxZqT0qZuZldUGCPQ&s" className="img-fluid" alt="Image" />
+            <img src="../src/assets/img/slider1.jpg" className="img-fluid" alt="Image" />
             <div className="carousel-caption">
               <div className="p-3" style={{ maxWidth: '900px' }}>
                 <h4 className="text-white text-uppercase fw-bold mb-4" style={{ letterSpacing: '3px' }}>Explore The World</h4>
@@ -24,7 +24,7 @@ const Slider: React.FC = () => {
             </div>
           </div>
           <div className="carousel-item">
-            <img src=".../assets/img/carousel-3.jpg" className="img-fluid" alt="Image" />
+            <img src="../src/assets/img/slider2.jpg" className="img-fluid" alt="Image" />
             <div className="carousel-caption">
               <div className="p-3" style={{ maxWidth: '900px' }}>
                 <h4 className="text-white text-uppercase fw-bold mb-4" style={{ letterSpacing: '3px' }}>Explore The World</h4>
@@ -37,7 +37,7 @@ const Slider: React.FC = () => {
             </div>
           </div>
           <div className="carousel-item">
-            <img src="../assets/img/carousel-3.jpg" className="img-fluid" alt="Image" />
+            <img src="../src/assets/img/slider3.jpg" className="img-fluid" alt="Image" />
             <div className="carousel-caption">
               <div className="p-3" style={{ maxWidth: '900px' }}>
                 <h4 className="text-white text-uppercase fw-bold mb-4" style={{ letterSpacing: '3px' }}>Explore The World</h4>

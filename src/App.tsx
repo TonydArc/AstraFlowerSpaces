@@ -8,6 +8,8 @@ import Login from './page/Login';
 import SignUp from './page/SignUp';
 import Contact from './page/Contact';
 import BookingForm from './page/Booking';
+import UserProfile from './page/UserProfile';
+import OfficeList from './page/OfficeList';
 
 
 const router = createBrowserRouter([
@@ -34,6 +36,14 @@ const router = createBrowserRouter([
       {
         path: "booking",
         element: <BookingForm/>
+      },
+      {
+        path: "profile",
+        element: <UserProfile/>
+      },
+      {
+        path: "officelist",
+        element: <OfficeList/>
       },
       {
         path: "*",

@@ -37,10 +37,7 @@ const TopBar: React.FC = () => {
                 <small><i className="fa fa-home me-2"></i> My Dashboard</small>
               </a>
               <div className="dropdown-menu rounded">
-                <a href="#" className="dropdown-item"><i className="fas fa-user-alt me-2"></i> My Profile</a>
-                <a href="#" className="dropdown-item"><i className="fas fa-comment-alt me-2"></i> Inbox</a>
-                <a href="#" className="dropdown-item"><i className="fas fa-bell me-2"></i> Notifications</a>
-                <a href="#" className="dropdown-item"><i className="fas fa-cog me-2"></i> Account Settings</a>
+                <a href="/profile" className="dropdown-item"><i className="fas fa-user-alt me-2"></i> My Profile</a>
                 <a href="#" className="dropdown-item"><i className="fas fa-power-off me-2"></i> Log Out</a>
               </div>
             </div>
