@@ -394,7 +394,7 @@
 
 /*** Single Page Hero Header Start ***/
 .bg-breadcrumb {
-    background: linear-gradient(rgba(19, 53, 123, 0.5), rgba(19, 53, 123, 0.5)), url(https://w.wallhaven.cc/full/x6/wallhaven-x681do.png);
+    background: linear-gradient(rgba(19, 53, 123, 0.5), rgba(19, 53, 123, 0.5)), url(../assets/img/office1.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -885,7 +885,7 @@
 
 /*** Tour Booking Start ***/
 .booking {
-    background: linear-gradient(rgba(19, 53, 123, .8), rgba(19, 53, 123, .8)), url(../img/tour-booking-bg.jpg);
+    background: linear-gradient(rgba(19, 53, 123, .8), rgba(19, 53, 123, .8)), url(../assets/img/bookingbg.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -1196,7 +1196,7 @@
 
 /*** Subscribe Start ***/
 .subscribe {
-    background: linear-gradient(rgba(19, 53, 123, .6), rgba(19, 53, 123, .6)), url(../img/subscribe-img.jpg);
+    background: linear-gradient(rgba(19, 53, 123, .6), rgba(19, 53, 123, .6)), url(../assets/img/office2.jpg);
     background-attachment: fixed;
     background-position: center center;
     background-repeat: no-repeat;

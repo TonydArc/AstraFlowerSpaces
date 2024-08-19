@@ -19,19 +19,19 @@ const Contact: React.FC = () => {
                 <div className="text-center mb-4">
                   <i className="fa fa-map-marker-alt fa-3x text-primary"></i>
                   <h4 className="text-primary">Address</h4>
-                  <p className="mb-0">123 ranking Street, <br /> New York, USA</p>
+                  <p className="mb-0"> <br /> Wandenreich</p>
                 </div>
                 <div className="text-center mb-4">
                   <i className="fa fa-phone-alt fa-3x text-primary mb-3"></i>
                   <h4 className="text-primary">Mobile</h4>
-                  <p className="mb-0">+012 345 67890</p>
-                  <p className="mb-0">+012 345 67890</p>
+                  <p className="mb-0">+8888888888</p>
+                  <p className="mb-0">+8888888888</p>
                 </div>
                 <div className="text-center">
                   <i className="fa fa-envelope-open fa-3x text-primary mb-3"></i>
                   <h4 className="text-primary">Email</h4>
-                  <p className="mb-0">info@example.com</p>
-                  <p className="mb-0">info@example.com</p>
+                  <p className="mb-0">wandenreich@gmail.com</p>
+                  <p className="mb-0"></p>
                 </div>
               </div>
             </div>
@@ -39,7 +39,6 @@ const Contact: React.FC = () => {
               <h3 className="mb-2">Send us a message</h3>
               <p className="mb-4">
                 The contact form is currently inactive. Get a functional and working contact form with Ajax & PHP in a few minutes. Just copy and paste the files, add a little code and you're done.{' '}
-                <a href="https://htmlcodex.com/contact-form">Download Now</a>.
               </p>
               <form>
                 <div className="row g-3">

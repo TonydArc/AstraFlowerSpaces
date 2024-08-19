@@ -11,15 +11,16 @@ const Testimonial: React.FC = () => {
                 <div className="testimonial-carousel">
                     <div className="testimonial-item text-center rounded pb-4" style={{ width: "400px" }}>
                         <div className="testimonial-comment bg-light rounded p-4">
-                            <p className="text-center mb-5">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quis nostrum cupiditate, eligendi repellendus saepe illum earum architecto dicta quisquam quasi porro officiis. Vero reiciendis,
+                            <p className="text-center mb-5">
+                                qua da
                             </p>
                         </div>
                         <div className="testimonial-img p-1">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqX2B83dbZw3DtUgo-JEcSQCYHq2B-4-o18w&s" className="img-fluid rounded-circle" alt="Image" />
+                            <img src="https://icons.veryicon.com/png/o/miscellaneous/youyinzhibo/guest.png" className="img-fluid rounded-circle" alt="Image" />
                         </div>
                         <div style={{ marginTop: '-35px' }}>
-                            <h5 className="mb-0">John Abraham</h5>
-                            <p className="mb-0">New York, USA</p>
+                            <h5 className="mb-0">kien</h5>
+                            <p className="mb-0">kien</p>
                             <div className="d-flex justify-content-center">
                                 <i className="fas fa-star text-primary"></i>
                                 <i className="fas fa-star text-primary"></i>
@@ -31,15 +32,16 @@ const Testimonial: React.FC = () => {
                     </div>
                     <div className="testimonial-item text-center rounded pb-4" style={{ width: "400px" }}>
                         <div className="testimonial-comment bg-light rounded p-4">
-                            <p className="text-center mb-5">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quis nostrum cupiditate, eligendi repellendus saepe illum earum architecto dicta quisquam quasi porro officiis. Vero reiciendis,
+                            <p className="text-center mb-5">
+                                uy tin uy tin
                             </p>
                         </div>
                         <div className="testimonial-img p-1">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqX2B83dbZw3DtUgo-JEcSQCYHq2B-4-o18w&s" className="img-fluid rounded-circle" alt="Image" />
+                            <img src="https://icons.veryicon.com/png/o/miscellaneous/youyinzhibo/guest.png" className="img-fluid rounded-circle" alt="Image" />
                         </div>
                         <div style={{ marginTop: '-35px' }}>
-                            <h5 className="mb-0">John Abraham</h5>
-                            <p className="mb-0">New York, USA</p>
+                            <h5 className="mb-0">phule</h5>
+                            <p className="mb-0">phule</p>
                             <div className="d-flex justify-content-center">
                                 <i className="fas fa-star text-primary"></i>
                                 <i className="fas fa-star text-primary"></i>
@@ -51,15 +53,16 @@ const Testimonial: React.FC = () => {
                     </div>
                     <div className="testimonial-item text-center rounded pb-4" style={{ width: "400px" }}>
                         <div className="testimonial-comment bg-light rounded p-4">
-                            <p className="text-center mb-5">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quis nostrum cupiditate, eligendi repellendus saepe illum earum architecto dicta quisquam quasi porro officiis. Vero reiciendis,
+                            <p className="text-center mb-5">
+                                qua uy tin
                             </p>
                         </div>
                         <div className="testimonial-img p-1">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqX2B83dbZw3DtUgo-JEcSQCYHq2B-4-o18w&s" className="img-fluid rounded-circle" alt="Image" />
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTluyicuemknFfIVVsKwXIqyLD2kLp8Q6sOdw&s" className="img-fluid rounded-circle" alt="Image" />
                         </div>
                         <div style={{ marginTop: '-35px' }}>
-                            <h5 className="mb-0">John Abraham</h5>
-                            <p className="mb-0">New York, USA</p>
+                            <h5 className="mb-0">Yhwach</h5>
+                            <p className="mb-0">Wandenreich</p>
                             <div className="d-flex justify-content-center">
                                 <i className="fas fa-star text-primary"></i>
                                 <i className="fas fa-star text-primary"></i>

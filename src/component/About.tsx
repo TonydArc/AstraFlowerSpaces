@@ -28,7 +28,7 @@ const About: React.FC = () => {
           >
             <h5 className="section-about-title pe-3">About Us</h5>
             <h1 className="mb-4">
-              Welcome to <span className="text-primary">Travela</span>
+              Welcome to <span className="text-primary">AstraFlowerSpaces</span>
             </h1>
             <p className="mb-4">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, dolorum, doloribus sunt dicta, officia voluptatibus libero necessitatibus natus impedit quam ullam assumenda? Id atque iste consectetur. Commodi odit ab saepe!
@@ -68,9 +68,9 @@ const About: React.FC = () => {
                 </p>
               </div>
             </div>
-            <a className="btn btn-primary rounded-pill py-3 px-5 mt-2" href="#">
+            {/* <a className="btn btn-primary rounded-pill py-3 px-5 mt-2" href="#">
               Read More
-            </a>
+            </a> */}
           </div>
         </div>
       </div>

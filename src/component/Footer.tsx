@@ -6,7 +6,7 @@ const Footer: React.FC = () => {
       {/* Subscribe Start */}
       <div className="container-fluid subscribe py-5">
         <div className="container text-center py-5">
-          <div className="mx-auto text-center" style={{ maxWidth: '900px' }}>
+          {/* <div className="mx-auto text-center" style={{ maxWidth: '900px' }}>
             <h5 className="subscribe-title px-3">Subscribe</h5>
             <h1 className="text-white mb-4">Our Newsletter</h1>
             <p className="text-white mb-5">
@@ -18,7 +18,7 @@ const Footer: React.FC = () => {
                 Subscribe
               </button>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
       {/* Subscribe End */}
@@ -30,10 +30,10 @@ const Footer: React.FC = () => {
             <div className="col-md-6 col-lg-6 col-xl-3">
               <div className="footer-item d-flex flex-column">
                 <h4 className="mb-4 text-white">Get In Touch</h4>
-                <a href="#"><i className="fas fa-home me-2"></i> 123 Street, New York, USA</a>
-                <a href="#"><i className="fas fa-envelope me-2"></i> info@example.com</a>
-                <a href="#"><i className="fas fa-phone me-2"></i> +012 345 67890</a>
-                <a href="#" className="mb-3"><i className="fas fa-print me-2"></i> +012 345 67890</a>
+                <a href="#"><i className="fas fa-home me-2"></i> Wandenreich</a>
+                <a href="#"><i className="fas fa-envelope me-2"></i> wandenreich@gmail.com</a>
+                <a href="#"><i className="fas fa-phone me-2"></i> +8888888888</a>
+                <a href="#" className="mb-3"><i className="fas fa-print me-2"></i> +8888888888</a>
                 <div className="d-flex align-items-center">
                   <i className="fas fa-share fa-2x text-white me-2"></i>
                   <a className="btn-square btn btn-primary rounded-circle mx-1" href="#"><i className="fab fa-facebook-f"></i></a>
@@ -67,7 +67,7 @@ const Footer: React.FC = () => {
             </div>
             <div className="col-md-6 col-lg-6 col-xl-3">
               <div className="footer-item">
-                <div className="row gy-3 gx-2 mb-4">
+                {/* <div className="row gy-3 gx-2 mb-4">
                   <div className="col-xl-6">
                     <form>
                       <div className="form-floating">
@@ -94,8 +94,8 @@ const Footer: React.FC = () => {
                       </div>
                     </form>
                   </div>
-                </div>
-                <h4 className="text-white mb-3">Payments</h4>
+                </div> */}
+                {/* <h4 className="text-white mb-3">Payments</h4>
                 <div className="footer-bank-card">
                   <a href="#" className="text-white me-2"><i className="fab fa-cc-amex fa-2x"></i></a>
                   <a href="#" className="text-white me-2"><i className="fab fa-cc-visa fa-2x"></i></a>
@@ -103,7 +103,7 @@ const Footer: React.FC = () => {
                   <a href="#" className="text-white me-2"><i className="fab fa-cc-mastercard fa-2x"></i></a>
                   <a href="#" className="text-white me-2"><i className="fab fa-cc-paypal fa-2x"></i></a>
                   <a href="#" className="text-white"><i className="fab fa-cc-discover fa-2x"></i></a>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
@@ -112,7 +112,7 @@ const Footer: React.FC = () => {
       {/* Footer End */}
 
       {/* Copyright Start */}
-      <div className="container-fluid copyright text-body py-4">
+      {/* <div className="container-fluid copyright text-body py-4">
         <div className="container">
           <div className="row g-4 align-items-center">
             <div className="col-md-6 text-center text-md-end mb-md-0">
@@ -123,7 +123,7 @@ const Footer: React.FC = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
       {/* Copyright End */}
 
       {/* Back to Top */}
