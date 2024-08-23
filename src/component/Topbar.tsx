@@ -16,7 +16,7 @@ const TopBar: React.FC = () => {
       try {
         const data = await getProfile();
         // console.log(data);
-        setUserName(data.Fullname);
+        setUserName(data.FullName);
       } catch (error) {
         alert(error);
       }

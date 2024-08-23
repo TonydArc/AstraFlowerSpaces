@@ -1,23 +1,46 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from '../component/Header';
+import { getOffices } from '../services/OfficeService';
 
-const offices = [
-    { id: 1, location: 'Venice - Italy', price: 349.00, duration: '3 days', image: 'https://static.wikia.nocookie.net/drakengard/images/a/af/ChurchCity.jpg/revision/latest?cb=20140207022508' },
-    { id: 1, location: 'Venice - Italy', price: 349.00, duration: '3 days', image: 'https://static.wikia.nocookie.net/drakengard/images/a/af/ChurchCity.jpg/revision/latest?cb=20140207022508' },
-    { id: 1, location: 'Venice - Italy', price: 349.00, duration: '3 days', image: 'https://static.wikia.nocookie.net/drakengard/images/a/af/ChurchCity.jpg/revision/latest?cb=20140207022508' },
-    { id: 1, location: 'Venice - Italy', price: 349.00, duration: '3 days', image: 'https://static.wikia.nocookie.net/drakengard/images/a/af/ChurchCity.jpg/revision/latest?cb=20140207022508' },
-    { id: 1, location: 'Venice - Italy', price: 349.00, duration: '3 days', image: 'https://static.wikia.nocookie.net/drakengard/images/a/af/ChurchCity.jpg/revision/latest?cb=20140207022508' },
-    { id: 1, location: 'Venice - Italy', price: 349.00, duration: '3 days', image: 'https://static.wikia.nocookie.net/drakengard/images/a/af/ChurchCity.jpg/revision/latest?cb=20140207022508' },
-    { id: 1, location: 'Venice - Italy', price: 349.00, duration: '3 days', image: 'https://static.wikia.nocookie.net/drakengard/images/a/af/ChurchCity.jpg/revision/latest?cb=20140207022508' },
-    { id: 1, location: 'Venice - Italy', price: 349.00, duration: '3 days', image: 'https://static.wikia.nocookie.net/drakengard/images/a/af/ChurchCity.jpg/revision/latest?cb=20140207022508' },
-    { id: 1, location: 'Venice - Italy', price: 349.00, duration: '3 days', image: 'https://static.wikia.nocookie.net/drakengard/images/a/af/ChurchCity.jpg/revision/latest?cb=20140207022508' },
-
-    // Add more office objects here
-];
+interface Office {
+    OfficeID: number;
+    OfficeName: string;
+    Description: string;
+    Address: string;
+    Price: string;
+    ServiceName: string;
+    Status: string;
+    ImgURL: string;
+    ThumbnailURL?: string;
+    TypeName: string;
+}
 
 const OfficeList: React.FC = () => {
     const [currentPage, setCurrentPage] = useState(1);
-    const [itemsPerPage] = useState(6); // Number of items per page
+    const [itemsPerPage] = useState(6);
+    const [offices, setOffices] = useState<Office[]>([]);
+
+    useEffect(() => {
+        const fetchOffices = async () => {
+            try {
+                const response = await getOffices();
+                if (response.success) {
+                    setOffices(response.data);
+                } else {
+                    console.error('Error fetching data:', response.message);
+                }
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+
+        fetchOffices();
+    }, []);
+
+    const formatPrice = (price: string) => {
+        const numericPrice = parseFloat(price);
+        return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND', minimumFractionDigits: 0 }).format(numericPrice);
+    };
 
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -27,6 +50,7 @@ const OfficeList: React.FC = () => {
         event.preventDefault();
         setCurrentPage(pageNumber);
     };
+
     const renderPagination = () => {
         const pageNumbers = [];
         for (let i = 1; i <= Math.ceil(offices.length / itemsPerPage); i++) {
@@ -60,11 +84,10 @@ const OfficeList: React.FC = () => {
 
     return (
         <>
-            <Header path='Office List' title='Book Now'/>
+            <Header path='Office List' title='Book Now' />
 
             <div className="container-fluid packages py-5">
                 <div className="container py-5">
-                    {/* sort and filter */}
                     <div className="mx-auto text-center mb-5" style={{ maxWidth: "900px" }}>
                         <h5 className="section-title px-3">Packages</h5>
                         <h1 className="mb-0">Awesome Packages</h1>
@@ -76,29 +99,28 @@ const OfficeList: React.FC = () => {
                                     <option value="2">Rating</option>
                                     <option value="3">Duration</option>
                                 </select>
-                                <input type="text" className="form-control" placeholder="Filter by location"/>
+                                <input type="text" className="form-control" placeholder="Filter by location" />
                             </div>
                             <button className="btn btn-primary">Apply</button>
                         </div>
                     </div>
 
                     <div className="row">
-                        {currentItems.map((item, index) => (
-                            <div className="col-lg-4 col-md-6 mb-4" key={index}>
+                        {currentItems.map((item) => (
+                            <div className="col-lg-4 col-md-6 mb-4" key={item.OfficeID}>
                                 <div className="packages-item">
                                     <div className="packages-img">
-                                        <img src={item.image} className="img-fluid w-100 rounded-top" alt="Image" />
+                                        <img src='https://maisonoffice.vn/wp-content/uploads/2023/08/2-head-office-la-gi.jpg' className="img-fluid w-100 rounded-top" alt="Image" />
                                         <div className="packages-info d-flex border border-start-0 border-end-0 position-absolute" style={{ width: '100%', bottom: '0', left: '0', zIndex: 5 }}>
-                                            <small className="flex-fill text-center border-end py-2"><i className="fa fa-map-marker-alt me-2"></i>{item.location}</small>
-                                            <small className="flex-fill text-center border-end py-2"><i className="fa fa-calendar-alt me-2"></i>{item.duration}</small>
-                                            <small className="flex-fill text-center py-2"><i className="fa fa-user me-2"></i>2 Person</small>
+                                            <small className="flex-fill text-center border-end py-2"><i className="fa fa-map-marker-alt me-2"></i>{item.Address}</small>
+                                            <small className="flex-fill text-center py-2"><i className="fa fa-tag me-2"></i>{item.ServiceName}</small>
                                         </div>
-                                        <div className="packages-price py-2 px-4">${item.price}</div>
+                                        <div className="packages-price py-2 px-4">{formatPrice(item.Price)}/Ngày</div>
                                     </div>
                                     <div className="packages-content bg-light">
                                         <div className="p-4 pb-0">
-                                            <h5 className="mb-0">{item.location}</h5>
-                                            <small className="text-uppercase">Hotel Deals</small>
+                                            <h5 className="mb-0">{item.OfficeName}</h5>
+                                            <small className="text-uppercase">{item.TypeName}</small>
                                             <div className="mb-3">
                                                 <small className="fa fa-star text-primary"></small>
                                                 <small className="fa fa-star text-primary"></small>
@@ -106,7 +128,7 @@ const OfficeList: React.FC = () => {
                                                 <small className="fa fa-star text-primary"></small>
                                                 <small className="fa fa-star text-primary"></small>
                                             </div>
-                                            <p className="mb-4">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt nemo quia quae illum aperiam fugiat voluptatem repellat</p>
+                                            <p className="mb-4">{item.Description}</p>
                                         </div>
                                         <div className="row bg-primary rounded-bottom mx-0">
                                             <div className="col-6 text-start px-0">
@@ -122,14 +144,13 @@ const OfficeList: React.FC = () => {
                         ))}
                     </div>
 
-                    {/* pagination */}
                     <div className="d-flex justify-content-center mt-4">
                         {renderPagination()}
                     </div>
                 </div>
             </div>
         </>
-    )
+    );
 };
 
 export default OfficeList;

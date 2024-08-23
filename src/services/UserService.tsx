@@ -4,7 +4,7 @@ import { getAccessToken, removeToken, setToken } from './untils';
 import Cookies from 'universal-cookie';
 
 const API_URL = 'http://127.0.0.1:8000/api/auth/';
-
+const API_CUS = 'http://127.0.0.1:8000/api/';
 
 export async function register(formdata: {
     'Fullname': string,
@@ -33,25 +33,13 @@ export async function login(formdata: {
     }
 };
 
-export async function getProfile() {
-    const token = getAccessToken();
-    try {
-        const profile = await axios.get(API_URL + `profile`,{
-            headers: { Authorization: `Bearer ${token}` }
-        })
-        return profile.data.data;
-    } catch (error) {
-        console.error(error);
-        throw error;
-    }
-}
 
 export async function logout() {
     const token = getAccessToken();
     const config = {
         headers: { Authorization: `Bearer ${token}` }
     };
-
+    
     try {
         const user = await axios.post(API_URL + `logout`, null, config);
         removeToken();
@@ -62,6 +50,37 @@ export async function logout() {
 };
 
 
+export async function getProfile() {
+    const token = getAccessToken();
+    try {
+        const profile = await axios.get(API_CUS + `customerprofile`,{
+            headers: { Authorization: `Bearer ${token}` }
+        })
+        return profile.data.data;
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
+}
+
+export async function updateProfile(formdata: {
+    "FullName": string,
+    "Email": string,
+    "Phone": string,
+    "Address": string
+},id: number) {
+    const token = getAccessToken();
+
+    try {
+        const data = await axios.put(API_CUS + 'customerprofile/' + id, formdata, {
+            headers: { Authorization: `Bearer ${token}` }
+        })
+        return data.data.data;
+    }catch (error) {
+        console.error(error);
+        throw error;
+    }
+}
 
 
 
