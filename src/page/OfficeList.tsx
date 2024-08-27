@@ -128,14 +128,17 @@ const OfficeList: React.FC = () => {
                                                 <small className="fa fa-star text-primary"></small>
                                                 <small className="fa fa-star text-primary"></small>
                                             </div>
-                                            <p className="mb-4">{item.Description}</p>
+                                            {/* CSS để ẩn bớt mô tả nếu quá dài */}
+                                            <p className="description mb-4">
+                                                {item.Description}
+                                            </p>
                                         </div>
                                         <div className="row bg-primary rounded-bottom mx-0">
                                             <div className="col-6 text-start px-0">
                                                 <a href="#" className="btn-hover btn text-white py-2 px-4">Read More</a>
                                             </div>
                                             <div className="col-6 text-end px-0">
-                                                <a href="#" className="btn-hover btn text-white py-2 px-4">Book Now</a>
+                                                <a href={`booking/${item.OfficeID}`} className="btn-hover btn text-white py-2 px-4">Book Now</a>
                                             </div>
                                         </div>
                                     </div>

@@ -1258,3 +1258,14 @@
     background: var(--bs-dark) !important;
 }
 /*** copyright end ***/
+
+
+/* Thêm CSS này vào tệp CSS của bạn hoặc trong thẻ style */
+.description {
+    max-height: 60px; /* Giới hạn chiều cao tối đa */
+    overflow: hidden; /* Ẩn phần nội dung vượt quá */
+    text-overflow: ellipsis; /* Thêm dấu ba chấm nếu nội dung bị cắt */
+    display: -webkit-box;
+    -webkit-line-clamp: 1; /* Hiển thị tối đa 3 dòng */
+    -webkit-box-orient: vertical;
+}
