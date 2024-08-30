@@ -110,7 +110,8 @@ const OfficeList: React.FC = () => {
                             <div className="col-lg-4 col-md-6 mb-4" key={item.OfficeID}>
                                 <div className="packages-item">
                                     <div className="packages-img">
-                                        <img src='https://maisonoffice.vn/wp-content/uploads/2023/08/2-head-office-la-gi.jpg' className="img-fluid w-100 rounded-top" alt="Image" />
+                                        {/* {`https://res.cloudinary.com/dbsou9jps/image/upload/${item.ImgURL}`} */}
+                                        <img src="https://media.istockphoto.com/id/1196990459/photo/open-space-office.jpg?b=1&s=612x612&w=0&k=20&c=UfgPFzkdxhoJbLyXUOGoUsLb2b-7b7LjxnZH3xgaphA=" className="img-fluid w-100 rounded-top" alt="Image" />
                                         <div className="packages-info d-flex border border-start-0 border-end-0 position-absolute" style={{ width: '100%', bottom: '0', left: '0', zIndex: 5 }}>
                                             <small className="flex-fill text-center border-end py-2"><i className="fa fa-map-marker-alt me-2"></i>{item.Address}</small>
                                             <small className="flex-fill text-center py-2"><i className="fa fa-tag me-2"></i>{item.ServiceName}</small>
@@ -135,7 +136,7 @@ const OfficeList: React.FC = () => {
                                         </div>
                                         <div className="row bg-primary rounded-bottom mx-0">
                                             <div className="col-6 text-start px-0">
-                                                <a href="#" className="btn-hover btn text-white py-2 px-4">Read More</a>
+                                                <a href={`/office/detail/${item.OfficeID}`} className="btn-hover btn text-white py-2 px-4">Read More</a>
                                             </div>
                                             <div className="col-6 text-end px-0">
                                                 <a href={`booking/${item.OfficeID}`} className="btn-hover btn text-white py-2 px-4">Book Now</a>

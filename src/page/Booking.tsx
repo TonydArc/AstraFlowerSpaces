@@ -164,6 +164,11 @@ const BookingForm: React.FC = () => {
             console.error('Error booking office:', error);
         }
     };
+
+    const formatPrice = (price: string) => {
+        const numericPrice = parseFloat(price);
+        return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND', minimumFractionDigits: 0 }).format(numericPrice);
+    };
     
 
     if (!office) {
@@ -192,7 +197,7 @@ const BookingForm: React.FC = () => {
                                         <small className="flex-fill text-center border-end py-2"><i className="fa fa-tag me-2"></i>{office.ServiceName}</small>
                                         <small className="flex-fill text-center py-2"><i className="fa fa-building me-2"></i>{office.TypeName}</small>
                                     </div>
-                                    <div className="packages-price py-2 px-4">{office.Price.toLocaleString()} VND/Ngày</div>
+                                    <div className="packages-price py-2 px-4">{formatPrice(office.Price.toLocaleString())}/Ngày</div>
                                 </div>
                                 <div className="packages-content bg-light rounded-bottom flex-grow-1 d-flex flex-column">
                                     <div className="p-4 pb-0">

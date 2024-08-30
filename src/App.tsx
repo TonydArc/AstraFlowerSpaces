@@ -10,6 +10,7 @@ import Contact from './page/Contact';
 import BookingForm from './page/Booking';
 import UserProfile from './page/UserProfile';
 import OfficeList from './page/OfficeList';
+import OfficeDetail from './page/OfficeDetail';
 
 
 const router = createBrowserRouter([
@@ -22,28 +23,32 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "login",
+        path: "/login",
         element: <Login/>
       },
       {
-        path: "signup",
+        path: "/signup",
         element: <SignUp/>
       },
       {
-        path: "contact",
+        path: "/contact",
         element: <Contact/>
       },
       {
-        path: "booking/:id",
+        path: "/booking/:id",
         element: <BookingForm/>
       },
       {
-        path: "profile",
+        path: "/profile",
         element: <UserProfile/>
       },
       {
-        path: "officelist",
+        path: "/officelist",
         element: <OfficeList/>
+      },
+      {
+        path: "/office/detail/:id",
+        element: <OfficeDetail/>
       },
       {
         path: "*",
