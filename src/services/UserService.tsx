@@ -2,6 +2,7 @@
 import axios from 'axios';
 import { getAccessToken, removeToken, setToken } from './untils';
 import Cookies from 'universal-cookie';
+import { data } from 'jquery';
 
 const API_URL = 'http://127.0.0.1:8000/api/auth/';
 const API_CUS = 'http://127.0.0.1:8000/api/';
@@ -82,7 +83,35 @@ export async function updateProfile(formdata: {
     }
 }
 
+export async function writeCmt(data: {
+    "OfficeID": number,
+    "CustomerID": number,
+    "Rating": number,
+    "Comment": string,
+    "ReviewDate": string
+}) {
+    const token = getAccessToken();
 
+    try {
+        const cmt = await axios.post(API_CUS + 'writecmt', data, {
+            headers: { Authorization: `Bearer ${token}` }
+        })
+        return cmt.data;
+    }catch (error) {
+        console.error(error);
+        throw error;
+    }
+}
+
+export async function getCmtList(id: number) {
+    try {
+        const cmtlist = await axios.get(API_CUS + 'getcmtbyofficeid/' + id)
+        return cmtlist.data;
+    }catch (error) {
+        console.error(error);
+        throw error;
+    }
+}
 
 
 
