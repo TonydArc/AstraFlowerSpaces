@@ -1,8 +1,11 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import Header from "../component/Header";
 import { useParams } from 'react-router-dom';
 import { bookingOffice, getadditionalServices, getOfficeById } from '../services/OfficeService';
 import { getProfile } from '../services/UserService';
+import SuccessToast from '../component/toast/SuccessToast';
+import ErrorToast from '../component/toast/ErrorToast';
 
 interface Office {
     OfficeID: number;
@@ -35,10 +38,18 @@ const BookingForm: React.FC = () => {
     const [office, setOffice] = useState<Office | null>(null);
     const [customerid, setCustomerID] = useState<number | null>(null);
     const [additionalServices, setAdditionalServices] = useState<AdditionalService[]>([]);
-    const [bookingdate, setBookingDate] = useState<string>(new Date().toISOString().slice(0, 10)); // Format YYYY-MM-DD
     const [startDate, setStartDate] = useState<string>(new Date().toISOString().slice(0, 10)); // Format YYYY-MM-DD
     const [endDate, setEndDate] = useState<string>(new Date().toISOString().slice(0, 10)); // Format YYYY-MM-DD
     const [selectedServices, setSelectedServices] = useState<SelectedAdditionalService[]>([]);
+    const [showToast, setShowToast] = useState<boolean>(false);
+    const [showError, setErrorToast] = useState<boolean>(false);
+
+    const handleShowToast = () => {
+        setShowToast(true);
+    };
+    const handelErrorToast = () => {
+        setErrorToast(true);
+    };
 
     useEffect(() => {
         const fetchOfficeById = async () => {
@@ -78,18 +89,6 @@ const BookingForm: React.FC = () => {
         }
         fetchAdditionalServices();
 
-        const getCurrentDate = () => {
-            const today = new Date();
-            const year = today.getFullYear();
-            const month = String(today.getMonth() + 1).padStart(2, '0'); // Tháng từ 0-11, nên cộng thêm 1 và định dạng 2 chữ số
-            const day = String(today.getDate()).padStart(2, '0'); // Định dạng 2 chữ số
-        
-            const formattedDate = `${year}-${month}-${day}`;
-        
-            setBookingDate(formattedDate);
-        };
-
-        getCurrentDate();
     }, [])
 
     useEffect(() => {
@@ -105,12 +104,12 @@ const BookingForm: React.FC = () => {
         getCustomerID();
     }, [])
 
-    
+
 
     const handleCheckboxChange = (serviceID: number, price: string) => {
         setSelectedServices(prev => {
             const isSelected = prev.some(service => service.AdditionalServiceID === serviceID);
-            
+
             if (isSelected) {
                 // Nếu dịch vụ đã được chọn, bỏ chọn nó
                 return prev.filter(service => service.AdditionalServiceID !== serviceID);
@@ -127,41 +126,41 @@ const BookingForm: React.FC = () => {
 
     const handleBook = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-    
+
         // Check if required data is available
         if (customerid === null || office?.OfficeID === undefined) {
             console.error('CustomerID or OfficeID is missing');
             return;
         }
-    
+
         const isValid = selectedServices.every(service => {
-            return service.AdditionalServiceID > 0 && 
-                   service.Quantity > 0 && 
-                   service.Price >= 0;
+            return service.AdditionalServiceID > 0 &&
+                service.Quantity > 0 &&
+                service.Price >= 0;
         });
-    
+
         if (!isValid) {
             console.error('Invalid additional services data');
             return;
         }
-    
+
         const formdata = {
             CustomerID: customerid,
             OfficeID: office.OfficeID,
-            BookingDate: bookingdate,
             StartDate: startDate,
             EndDate: endDate,
-            Status: 'Đã thanh toán',
+            Status: 'Đang chờ xác nhận',
             AdditionalServices: selectedServices
         };
-    
+
         try {
+            console.log(formdata)
             const booking = await bookingOffice(formdata);
             // Handle successful booking
-            alert("Booking thanh cong")
-        } catch (error) {
+            handleShowToast()
+        } catch {
             // Handle errors
-            console.error('Error booking office:', error);
+            handelErrorToast();
         }
     };
 
@@ -169,7 +168,7 @@ const BookingForm: React.FC = () => {
         const numericPrice = parseFloat(price);
         return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND', minimumFractionDigits: 0 }).format(numericPrice);
     };
-    
+
 
     if (!office) {
         return <div>Loading...</div>; // Hiển thị trạng thái đang tải khi dữ liệu đang được lấy
@@ -309,6 +308,16 @@ const BookingForm: React.FC = () => {
                                         <div className="col-12">
                                             <button className="btn btn-primary text-white w-100 py-3" type="submit">Book Now</button>
                                         </div>
+                                        <SuccessToast
+                                            message="Booking thành công"
+                                            show={showToast}
+                                            onClose={() => setShowToast(false)}
+                                        />
+                                        <ErrorToast
+                                            message="Booking thất bại"
+                                            show={showError}
+                                            onClose={() => setShowToast(false)}
+                                        />
                                     </div>
                                 </form>
                             </div>

@@ -4,6 +4,8 @@ import { login } from '../services/UserService';
 import Cookies from 'universal-cookie';
 import { useNavigate } from 'react-router-dom';
 import { getAccessToken } from '../services/untils';
+import SuccessToast from '../component/toast/SuccessToast';
+import ErrorToast from '../component/toast/ErrorToast';
 
 const Login: React.FC = () => {
     const [email, setInputEmail] = useState('');
@@ -11,10 +13,21 @@ const Login: React.FC = () => {
     const [errors, setErrors] = useState({ email: '', password: '' });
     const cookies = new Cookies();
     const navigate = useNavigate();
+    const [showToast, setShowToast] = useState<boolean>(false);
+    const [showError, setErrorToast] = useState<boolean>(false);
+
+    const handleShowToast = () => {
+        setShowToast(true);
+    };
+
+    const handelErrorToast = () => {
+        setErrorToast(true);
+    };
 
     const handleChangeEmail = (event: { target: { value: SetStateAction<string>; }; }) => {
         setInputEmail(event.target.value);
     };
+
     const handleChangePassword = (event: { target: { value: SetStateAction<string>; }; }) => {
         setInputPassword(event.target.value);
     };
@@ -22,7 +35,9 @@ const Login: React.FC = () => {
     useEffect(() => {
         const token = getAccessToken();
         if (token) {
-            navigate('/');
+            setTimeout(() => {
+                navigate("/")
+            }, 2000);
         }
     }, [cookies, navigate]);
 
@@ -63,11 +78,10 @@ const Login: React.FC = () => {
             };
             try {
                 const user = await login(formdata);
-                alert('Login Success')
-                navigate('/');
-                return user
-            }catch (error) {
-                alert('Login error: ' + error);
+                handleShowToast();
+                return user;
+            } catch {
+                handelErrorToast();
             }
         }
     };
@@ -138,7 +152,16 @@ const Login: React.FC = () => {
                                 <p className="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="/signup"
                                     className="link-danger">Sign Up</a></p>
                             </div>
-
+                            <SuccessToast
+                                message="Login thành công"
+                                show={showToast}
+                                onClose={() => setShowToast(false)}
+                            />
+                            <ErrorToast
+                                message="Login thất bại"
+                                show={showError}
+                                onClose={() => setErrorToast(false)}
+                            />
                         </form>
                     </div>
                 </div>

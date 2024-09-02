@@ -78,7 +78,6 @@ const OfficeDetail: React.FC = () => {
                                 {office?.Description}
                             </p>
 
-
                             <a style={{ width: "100%", marginTop: "30px"}} href={`/booking/${office?.OfficeID}`} className="btn btn-primary rounded-pill py-2 px-4">Book</a>
 
                         </div>

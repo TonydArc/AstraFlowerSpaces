@@ -43,7 +43,6 @@ export async function getadditionalServices() {
 export async function bookingOffice(formdata: {
     'CustomerID': number,
     'OfficeID': number,
-    'BookingDate': string,
     'StartDate': string,
     'EndDate': string,
     'Status': string,

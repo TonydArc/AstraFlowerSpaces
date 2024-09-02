@@ -4,12 +4,23 @@ import Cookies from 'universal-cookie';
 import { useNavigate } from 'react-router-dom';
 import { getProfile } from '../services/UserService';
 import { getAccessToken } from '../services/untils';
+import SuccessToast from './toast/SuccessToast';
+import ErrorToast from './toast/ErrorToast';
 
 const TopBar: React.FC = () => {
   const [userName, setUserName] = useState<string | null>(null);
   const cookies = new Cookies();
   const navigate = useNavigate();
   const accessToken = cookies.get('access_token');
+  const [showToast, setShowToast] = useState<boolean>(false);
+  const [showError, setErrorToast] = useState<boolean>(false);
+
+  const handleShowToast = () => {
+    setShowToast(true);
+  };
+  const handelErrorToast = () => {
+    setErrorToast(true);
+  };
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -28,15 +39,17 @@ const TopBar: React.FC = () => {
 
   })
 
-  const handleLogOut = async () => {
+  const handleLogOut = async (event: { preventDefault: () => void; }) => {
     // Xóa cookie access_token
-
+    event.preventDefault();
     try {
-      cookies.remove('access_token', { path: '/' });
-      alert('Log Out Success');
-      navigate('/');
-    } catch (error) {
-      alert(error);
+      handleShowToast();
+      setTimeout(() => {
+        cookies.remove('access_token', { path: '/' });
+        navigate('/'); // Chuyển hướng sau khi xóa token
+      }, 2000); // Thay đổi thời gian nếu cần
+    } catch {
+      handelErrorToast()
     }
   }
 
@@ -85,6 +98,16 @@ const TopBar: React.FC = () => {
                 </div>
               </div>
             )}
+            <SuccessToast
+              message="Log Out thành công"
+              show={showToast}
+              onClose={() => setShowToast(false)}
+            />
+            <ErrorToast
+              message="log Out thất bại"
+              show={showError}
+              onClose={() => setShowToast(false)}
+            />
           </div>
         </div>
       </div>

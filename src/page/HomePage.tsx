@@ -10,23 +10,22 @@ import Testimonial from '../component/Testimonial';
 import { getProfile } from '../services/UserService';
 
 const Home: React.FC = () => {
-
   useEffect(() => {
     const fetchTest = async () => {
       const data = await getProfile();
       console.log(data);
     }
     fetchTest();
-  },[]) 
+  }, [])
   return (
     <>
-      <Slider/>
-      <Search/>
-      <About/>
-      <Services/>
-      <TopOffice/>
-      <StaffTeam/>
-      <Testimonial/>
+      <Slider />
+      <Search />
+      <About />
+      <Services />
+      <TopOffice />
+      <StaffTeam />
+      <Testimonial />
     </>
   );
 };

@@ -4,6 +4,8 @@ import { register } from '../services/UserService';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'universal-cookie';
 import { getAccessToken } from '../services/untils';
+import SuccessToast from '../component/toast/SuccessToast';
+import ErrorToast from '../component/toast/ErrorToast';
 
 const SignUp: React.FC = () => {
     const [name, setInputName] = useState('');
@@ -12,8 +14,17 @@ const SignUp: React.FC = () => {
     const [confirmpassword, setConfirmPassword] = useState('');
     const cookies = new Cookies();
     const navigate = useNavigate();
+    const [showToast, setShowToast] = useState<boolean>(false);
+    const [showError, setErrorToast] = useState<boolean>(false);
 
     const [errors, setErrors] = useState<{ name?: string; email?: string; password?: string; confirmpassword?: string; }>({});
+
+    const handleShowToast = () => {
+        setShowToast(true);
+    };
+    const handelErrorToast = () => {
+        setErrorToast(true);
+    };
 
     useEffect(() => {
         const token = getAccessToken();
@@ -77,10 +88,11 @@ const SignUp: React.FC = () => {
             };
             try {
                 const user = await register(formdata);
-                alert('Registration successful');
+                handleShowToast();
                 return user;
-            } catch (error) {
-                alert('Register error: ' + error);
+            } catch {
+                handelErrorToast();
+                // alert('Register error: ' + error);
             }
         }
     };
@@ -146,7 +158,16 @@ const SignUp: React.FC = () => {
                                             <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                                                 <button type="submit" className="btn btn-primary btn-lg">Register</button>
                                             </div>
-
+                                            <SuccessToast
+                                                message="Sign Up thành công"
+                                                show={showToast}
+                                                onClose={() => setShowToast(false)}
+                                            />
+                                            <ErrorToast
+                                                message="Sign Up thất bại"
+                                                show={showError}
+                                                onClose={() => setShowToast(false)}
+                                            />
                                         </form>
 
                                     </div>
