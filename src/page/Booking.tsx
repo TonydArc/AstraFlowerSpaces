@@ -1,11 +1,13 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import Header from "../component/Header";
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { bookingOffice, getadditionalServices, getOfficeById } from '../services/OfficeService';
 import { getProfile } from '../services/UserService';
 import SuccessToast from '../component/toast/SuccessToast';
 import ErrorToast from '../component/toast/ErrorToast';
+import { getAccessToken } from '../services/untils';
+import Cookies from 'universal-cookie';
 
 interface Office {
     OfficeID: number;
@@ -43,6 +45,8 @@ const BookingForm: React.FC = () => {
     const [selectedServices, setSelectedServices] = useState<SelectedAdditionalService[]>([]);
     const [showToast, setShowToast] = useState<boolean>(false);
     const [showError, setErrorToast] = useState<boolean>(false);
+    const navigate = useNavigate();
+    const cookies = new Cookies();
 
     const handleShowToast = () => {
         setShowToast(true);
@@ -89,7 +93,7 @@ const BookingForm: React.FC = () => {
         }
         fetchAdditionalServices();
 
-    }, [])
+    }, [navigate])
 
     useEffect(() => {
         const getCustomerID = async () => {
@@ -101,8 +105,13 @@ const BookingForm: React.FC = () => {
             }
         }
 
-        getCustomerID();
-    }, [])
+        const token = getAccessToken();
+        if (token) {
+            getCustomerID()
+        }else {
+            navigate("/")
+        }
+    }, [cookies, navigate])
 
 
 

@@ -1,6 +1,6 @@
 import React, { SetStateAction, useEffect, useState } from 'react';
 import Header from '../component/Header';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { getOfficeById } from '../services/OfficeService';
 import { getCmtList, getProfile, writeCmt } from '../services/UserService';
 import { getAccessToken } from '../services/untils';
@@ -43,6 +43,7 @@ const OfficeDetail: React.FC = () => {
     const [error, setError] = useState('');
     const [showToast, setShowToast] = useState<boolean>(false);
     const [showError, setErrorToast] = useState<boolean>(false);
+    const navigate = useNavigate();
 
     const handleShowToast = () => {
         setShowToast(true);
@@ -63,6 +64,18 @@ const OfficeDetail: React.FC = () => {
 
         return `${year}-${month}-${day}`;
     };
+
+    const handleBook = (event: { preventDefault: () => void; }, id: number) => {
+        event.preventDefault()
+
+        const token = getAccessToken();
+        if (token) {
+            navigate(`/booking/${id}`)
+        } else {
+            setError("Vui lòng Login để book");
+            handelErrorToast();
+        }
+    }
 
     const handleSend = async () => {
         const token = getAccessToken();
@@ -85,7 +98,7 @@ const OfficeDetail: React.FC = () => {
                 handelErrorToast();
             }
         } else {
-            setError("Vui Lòng Log in trước khi comment");
+            setError("Vui Lòng Login trước khi comment");
             handelErrorToast();
         }
     };
@@ -174,7 +187,7 @@ const OfficeDetail: React.FC = () => {
                                 {office?.Description}
                             </p>
 
-                            <a style={{ width: "100%", marginTop: "30px" }} href={`/booking/${office?.OfficeID}`} className="btn btn-primary rounded-pill py-2 px-4">Book</a>
+                            <a onClick={(e) => handleBook(e, office?.OfficeID)} style={{ width: "100%", marginTop: "30px" }} href={`/booking/${office?.OfficeID}`} className="btn btn-primary rounded-pill py-2 px-4">Book</a>
 
                         </div>
                     </div>

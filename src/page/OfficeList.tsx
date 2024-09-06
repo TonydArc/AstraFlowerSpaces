@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Header from '../component/Header';
 import { getOffices } from '../services/OfficeService';
+import ErrorToast from '../component/toast/ErrorToast';
+import { getAccessToken } from '../services/untils';
+import { useNavigate } from 'react-router-dom';
 
 interface Office {
     OfficeID: number;
@@ -19,6 +22,23 @@ const OfficeList: React.FC = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage] = useState(6);
     const [offices, setOffices] = useState<Office[]>([]);
+    const [showError, setErrorToast] = useState<boolean>(false);
+    const navigate = useNavigate();
+
+    const handelErrorToast = () => {
+        setErrorToast(true);
+    };
+
+    const handleBookNow = (event: { preventDefault: () => void; }, id:number) => {
+        event.preventDefault();
+
+        const token = getAccessToken();
+        if (token) {
+            navigate(`/booking/${id}`)
+        } else {
+            handelErrorToast();
+        }
+    }
 
     useEffect(() => {
         const fetchOffices = async () => {
@@ -111,10 +131,10 @@ const OfficeList: React.FC = () => {
                                 <div className="packages-item">
                                     <div className="packages-img">
                                         {/* {`https://res.cloudinary.com/dbsou9jps/image/upload/${item.ImgURL}`} */}
-                                        <img src="https://media.istockphoto.com/id/1196990459/photo/open-space-office.jpg?b=1&s=612x612&w=0&k=20&c=UfgPFzkdxhoJbLyXUOGoUsLb2b-7b7LjxnZH3xgaphA=" className="img-fluid w-100 rounded-top" alt="Image" />
+                                        <img src={`https://res.cloudinary.com/dbsou9jps/image/upload/${item.ImgURL}`} style={{ height: "300px" }} className="img-fluid w-100 rounded-top" alt="Image" />
                                         <div className="packages-info d-flex border border-start-0 border-end-0 position-absolute" style={{ width: '100%', bottom: '0', left: '0', zIndex: 5 }}>
                                             <small className="flex-fill text-center border-end py-2"><i className="fa fa-map-marker-alt me-2"></i>{item.Address}</small>
-                                            <small className="flex-fill text-center py-2"><i className="fa fa-tag me-2"></i>{item.ServiceName}</small>
+                                            {/* <small className="flex-fill text-center py-2"><i className="fa fa-tag me-2"></i>{item.ServiceName}</small> */}
                                         </div>
                                         <div className="packages-price py-2 px-4">{formatPrice(item.Price)}/Ngày</div>
                                     </div>
@@ -139,7 +159,7 @@ const OfficeList: React.FC = () => {
                                                 <a href={`/office/detail/${item.OfficeID}`} className="btn-hover btn text-white py-2 px-4">Read More</a>
                                             </div>
                                             <div className="col-6 text-end px-0">
-                                                <a href={`booking/${item.OfficeID}`} className="btn-hover btn text-white py-2 px-4">Book Now</a>
+                                            <a href={`/booking/${item.OfficeID}`} onClick={(e) => handleBookNow(e, item.OfficeID)} className="btn-hover btn text-white py-2 px-4">Book Now</a>
                                             </div>
                                         </div>
                                     </div>
@@ -147,7 +167,11 @@ const OfficeList: React.FC = () => {
                             </div>
                         ))}
                     </div>
-
+                    <ErrorToast
+                        message="Vui lòng Login để book"
+                        show={showError}
+                        onClose={() => setErrorToast(false)}
+                    />
                     <div className="d-flex justify-content-center mt-4">
                         {renderPagination()}
                     </div>
