@@ -94,6 +94,7 @@ const TopBar: React.FC = () => {
                 </a>
                 <div className="dropdown-menu rounded">
                   <a href="/profile" className="dropdown-item"><i className="fas fa-user-alt me-2"></i> My Profile</a>
+                  {/* <a href="/profile" className="dropdown-item"><i className="fas fa-tasks me-2"></i> My Booking</a> */}
                   <a href="" onClick={handleLogOut} className="dropdown-item"><i className="fas fa-power-off me-2"></i> Log Out</a>
                 </div>
               </div>

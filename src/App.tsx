@@ -8,9 +8,9 @@ import Login from './page/Login';
 import SignUp from './page/SignUp';
 import Contact from './page/Contact';
 import BookingForm from './page/Booking';
-import UserProfile from './page/UserProfile';
 import OfficeList from './page/OfficeList';
 import OfficeDetail from './page/OfficeDetail';
+import Profile from './page/Profile';
 
 
 const router = createBrowserRouter([
@@ -40,7 +40,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/profile",
-        element: <UserProfile/>
+        element: <Profile/>
       },
       {
         path: "/officelist",

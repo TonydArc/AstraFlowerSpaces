@@ -140,7 +140,7 @@ const OfficeList: React.FC = () => {
                                     </div>
                                     <div className="packages-content bg-light">
                                         <div className="p-4 pb-0">
-                                            <h5 className="mb-0">{item.OfficeName}</h5>
+                                            <h5 className="description mb-0">{item.OfficeName}</h5>
                                             <small className="text-uppercase">{item.TypeName}</small>
                                             <div className="mb-3">
                                                 <small className="fa fa-star text-primary"></small>
