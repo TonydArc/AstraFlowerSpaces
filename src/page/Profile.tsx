@@ -5,6 +5,7 @@ import SuccessToast from "../component/toast/SuccessToast";
 import ErrorToast from "../component/toast/ErrorToast";
 import { getAccessToken } from "../services/untils";
 import { useNavigate } from "react-router-dom";
+import { getcustomerbook } from "../services/OfficeService";
 
 interface Profile {
     UserID: number;
@@ -15,18 +16,34 @@ interface Profile {
     Address: string;
 }
 
-interface Task {
-    id: number;
-    title: string;
-    status: string;
+interface Booking {
+    BookingID: number;
+    CustomerID: number;
+    OfficeID: number;
+    StartDate: string; // Format: "YYYY-MM-DD"
+    EndDate: string; // Format: "YYYY-MM-DD"
+    TotalAmount: string;
+    Status: string;
+    CreatedAt: string; // Format: "YYYY-MM-DD HH:mm:ss"
+    OfficeName: string;
+    Description: string;
+    Address: string;
+    CreateBy: number;
+    OfficeTypeID: number;
+    Price: string;
+    ServiceID: number;
+    StatusID: number;
+    ImgURL: string;
+    ThumbnailURL: string;
 }
+
 
 const Profile: React.FC = () => {
     const [profile, setProfile] = useState<Profile | null>(null);
     const [isEditing, setIsEditing] = useState<boolean>(false);
     const [showToast, setShowToast] = useState<boolean>(false);
     const [showError, setShowError] = useState<boolean>(false);
-    const [tasks, setTasks] = useState<Task[]>([]);
+    const [bookinglist, setBookingList] = useState<Booking[]>([]);
     const [searchTerm, setSearchTerm] = useState<string>('');
     const navigate = useNavigate();
 
@@ -50,22 +67,18 @@ const Profile: React.FC = () => {
     }, []);
 
     useEffect(() => {
-        // Fetch tasks from a service or API
-        const fetchTasks = async () => {
-            try {
-                // Dummy data for illustration
-                const dummyTasks: Task[] = [
-                    { id: 1, title: 'Create a New Landing', status: 'In Progress' },
-                    { id: 2, title: 'Update Documentation', status: 'Completed' },
-                    { id: 3, title: 'Fix Bugs', status: 'Pending' },
-                ];
-                setTasks(dummyTasks);
-            } catch {
-                setShowError(true);
-            }
-        };
-        fetchTasks();
-    }, []);
+        if (profile) {
+            const fetchBookList = async () => {
+                try {
+                    const booklist = await getcustomerbook(profile.CustomerID);
+                    setBookingList(booklist.data);
+                } catch {
+                    setShowError(true);
+                }
+            };
+            fetchBookList();
+        }
+    }, [profile]);
 
     const handleUpdateClick = () => {
         setIsEditing(true);
@@ -90,12 +103,8 @@ const Profile: React.FC = () => {
         }
     };
 
-    const handleDeleteTask = (id: number) => {
-        setTasks(tasks.filter(task => task.id !== id));
-    };
-
-    const filteredTasks = tasks.filter(task =>
-        task.title.toLowerCase().includes(searchTerm.toLowerCase())
+    const filteredBookings = bookinglist.filter((booking) =>
+        booking.OfficeName.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
     return (
@@ -173,39 +182,40 @@ const Profile: React.FC = () => {
                     <div className="col-12">
                         <div className="card">
                             <div className="card-body">
-                                <h4 className="mb-4">My Tasks</h4>
+                                <h4 className="mb-4">My Bookings</h4>
                                 <input
                                     type="text"
                                     className="form-control mb-4"
-                                    placeholder="Search Tasks"
+                                    placeholder="Search Bookings"
                                     value={searchTerm}
                                     onChange={(e) => setSearchTerm(e.target.value)}
                                 />
+
                                 <ul className="list-group">
-                                    {filteredTasks.map(task => (
-                                        <li key={task.id} className="list-group-item d-flex justify-content-between align-items-center">
-                                            <div className="form-check">
-                                                <input
-                                                    type="checkbox"
-                                                    className="form-check-input"
-                                                    id={`taskCheck${task.id}`}
-                                                />
-                                                <label className="form-check-label" htmlFor={`taskCheck${task.id}`}>
-                                                    {task.title}
-                                                </label>
+                                    {filteredBookings.map((booking) => (
+                                        <li key={booking.BookingID} className="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <h5>{booking.OfficeName}</h5>
+                                                <p>{booking.Description}</p>
+                                                <p>
+                                                    <strong>Start Date:</strong> {booking.StartDate} <br />
+                                                    <strong>End Date:</strong> {booking.EndDate} <br />
+                                                    <strong>Total Amount:</strong> {booking.TotalAmount}
+                                                </p>
                                             </div>
                                             <div>
-                                                <span className={`badge bg-${task.status === 'In Progress' ? 'warning' : 'success'}`}>{task.status}</span>
+                                                <span className={`badge bg-${booking.Status === 'Xác nhận' ? 'success' : 'warning'}`}>{booking.Status}</span>
                                                 <a href="#" className="text-muted ms-3">
                                                     <i className="bi bi-pencil"></i>
                                                 </a>
-                                                <a href="#" className="text-danger ms-3" onClick={() => handleDeleteTask(task.id)}>
+                                                <a href="#" className="text-danger ms-3">
                                                     <i className="bi bi-trash"></i>
                                                 </a>
                                             </div>
                                         </li>
                                     ))}
                                 </ul>
+
                             </div>
                         </div>
                     </div>

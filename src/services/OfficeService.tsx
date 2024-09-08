@@ -31,7 +31,7 @@ export async function getOfficeById(id: number) {
 
 export async function getadditionalServices() {
     try {
-        const products = await axios.get(API_URL + `additionalservices`, )
+        const products = await axios.get(API_URL + `additionalservices`,)
         return products.data;
     } catch (error) {
         console.error('fetch error:', error);
@@ -53,4 +53,19 @@ export async function bookingOffice(formdata: {
         headers: { Authorization: `Bearer ${token}` }
     });
     return book;
+}
+
+export async function getcustomerbook(id: number) {
+    const token = getAccessToken();
+
+
+    try {
+        const book = await axios.get(API_URL + 'getbookingbycustomerid/' + id, {
+            headers: { Authorization: `Bearer ${token}` }
+        });
+        return book.data;
+    } catch(error) {
+        console.error('fetch error:', error);
+        throw error;
+    }
 }
