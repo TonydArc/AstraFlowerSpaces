@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import Header from "../component/Header";
@@ -167,8 +168,21 @@ const BookingForm: React.FC = () => {
             const booking = await bookingOffice(formdata);
             // Handle successful booking
             handleShowToast()
-        } catch {
+        } catch(error: any) {
             // Handle errors
+            if (error.response) {
+                // The request was made and the server responded with a status code
+                // that falls out of the range of 2xx
+                console.error("Error Response Data:", error.response.data);
+                console.error("Error Response Status:", error.response.status);
+                console.error("Error Response Headers:", error.response.headers);
+            } else if (error.request) {
+                // The request was made but no response was received
+                console.error("Error Request:", error.request);
+            } else {
+                // Something happened in setting up the request that triggered an Error
+                console.error("Error Message:", error.message);
+            }
             handelErrorToast();
         }
     };

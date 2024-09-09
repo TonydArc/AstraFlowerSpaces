@@ -57,8 +57,6 @@ export async function bookingOffice(formdata: {
 
 export async function getcustomerbook(id: number) {
     const token = getAccessToken();
-
-
     try {
         const book = await axios.get(API_URL + 'getbookingbycustomerid/' + id, {
             headers: { Authorization: `Bearer ${token}` }
@@ -66,6 +64,20 @@ export async function getcustomerbook(id: number) {
         return book.data;
     } catch(error) {
         console.error('fetch error:', error);
+        throw error;
+    }
+}
+
+export async function cancelbook(id: number) {
+    const token = getAccessToken();
+    try {
+        // console.log(token)
+        const cancel = await axios.put(API_URL + 'cancelbook/' + id, {
+            headers: { Authorization: `Bearer ${token}` }
+        });
+        return cancel;
+    } catch(error) {
+        console.error('error:', error);
         throw error;
     }
 }
