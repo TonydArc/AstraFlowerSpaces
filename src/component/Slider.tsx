@@ -14,11 +14,11 @@ const Slider: React.FC = () => {
             <img src="../src/assets/img/slider1.jpg" className="img-fluid" alt="Image" />
             <div className="carousel-caption">
               <div className="p-3" style={{ maxWidth: '900px' }}>
-                <h4 className="text-white text-uppercase fw-bold mb-4" style={{ letterSpacing: '3px' }}>Explore The World</h4>
-                <h1 className="display-2 text-capitalize text-white mb-4">Let's The World Together!</h1>
-                <p className="mb-5 fs-5">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                <h4 className="text-white text-uppercase fw-bold mb-4" style={{ letterSpacing: '3px' }}>THUÊ VĂN PHÒNG</h4>
+                <h1 className="display-2 text-capitalize text-white mb-4">Tiết kiệm thời gian và công sức</h1>
+                <p className="mb-5 fs-5">Chúng tôi hỗ trợ bạn tiết kiệm tối đa thời gian và công sức trong việc tìm kiếm văn phòng lý tưởng.</p>
                 <div className="d-flex align-items-center justify-content-center">
-                  <a className="btn-hover-bg btn btn-primary rounded-pill text-white py-3 px-5" href="#">Discover Now</a>
+                  {/* <a className="btn-hover-bg btn btn-primary rounded-pill text-white py-3 px-5" href="">Discover Now</a> */}
                 </div>
               </div>
             </div>
@@ -27,11 +27,11 @@ const Slider: React.FC = () => {
             <img src="../src/assets/img/slider2.jpg" className="img-fluid" alt="Image" />
             <div className="carousel-caption">
               <div className="p-3" style={{ maxWidth: '900px' }}>
-                <h4 className="text-white text-uppercase fw-bold mb-4" style={{ letterSpacing: '3px' }}>Explore The World</h4>
-                <h1 className="display-2 text-capitalize text-white mb-4">Find Your Perfect Tour At Travel</h1>
-                <p className="mb-5 fs-5">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                <h4 className="text-white text-uppercase fw-bold mb-4" style={{ letterSpacing: '3px' }}>THUÊ VĂN PHÒNG</h4>
+                <h1 className="display-2 text-capitalize text-white mb-4">Vị trí đắc địa</h1>
+                <p className="mb-5 fs-5">Văn phòng tọa lạc tại những vị trí đắc địa, trung tâm thành phố, thuận tiện cho mọi hoạt động kinh doanh.</p>
                 <div className="d-flex align-items-center justify-content-center">
-                  <a className="btn-hover-bg btn btn-primary rounded-pill text-white py-3 px-5" href="#">Discover Now</a>
+                  {/* <a className="btn-hover-bg btn btn-primary rounded-pill text-white py-3 px-5" href="">Discover Now</a> */}
                 </div>
               </div>
             </div>
@@ -40,11 +40,11 @@ const Slider: React.FC = () => {
             <img src="../src/assets/img/slider3.jpg" className="img-fluid" alt="Image" />
             <div className="carousel-caption">
               <div className="p-3" style={{ maxWidth: '900px' }}>
-                <h4 className="text-white text-uppercase fw-bold mb-4" style={{ letterSpacing: '3px' }}>Explore The World</h4>
-                <h1 className="display-2 text-capitalize text-white mb-4">You Like To Go?</h1>
-                <p className="mb-5 fs-5">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                <h4 className="text-white text-uppercase fw-bold mb-4" style={{ letterSpacing: '3px' }}>THUÊ VĂN PHÒNG</h4>
+                <h1 className="display-2 text-capitalize text-white mb-4">Giá cả cạnh tranh</h1>
+                <p className="mb-5 fs-5">Giá thuê hấp dẫn, phù hợp với mọi ngân sách, giúp bạn tối ưu hóa chi phí kinh doanh.</p>
                 <div className="d-flex align-items-center justify-content-center">
-                  <a className="btn-hover-bg btn btn-primary rounded-pill text-white py-3 px-5" href="#">Discover Now</a>
+                  {/* <a className="btn-hover-bg btn btn-primary rounded-pill text-white py-3 px-5" href="">Discover Now</a> */}
                 </div>
               </div>
             </div>

@@ -2,13 +2,12 @@ import React from 'react';
 
 const StaffTeam: React.FC = () => {
   return (
-    <div className="container-fluid guide py-5">
+    <div className="container-fluid guide">
       <div className="container py-5">
         <div className="mx-auto text-center mb-5" style={{ maxWidth: '900px' }}>
-          <h5 className="section-title px-3">CEO</h5>
-          <h1 className="mb-0">Meet Our CEO</h1>
+          <h3 className="section-title px-3">NGƯỜI ĐỨNG ĐẦU</h3>
+          {/* <p className="mb-0">Các vị CEO</p> */}
         </div>
-        
         <div className="row g-4 justify-content-center">
           
           <div className="col-md-6 col-lg-4">

@@ -4,10 +4,11 @@ import Slider from '../component/Slider';
 import Search from '../component/Search';
 import About from '../component/About';
 import Services from '../component/Services';
-import TopOffice from '../component/TopOffice';
 import StaffTeam from '../component/StaffTeam';
-import Testimonial from '../component/Testimonial';
 import { getProfile } from '../services/UserService';
+import Partner from '../component/Partner';
+import TopBuilding from '../component/TopBuilding';
+
 
 const Home: React.FC = () => {
   useEffect(() => {
@@ -23,9 +24,9 @@ const Home: React.FC = () => {
       <Search />
       <About />
       <Services />
-      <TopOffice />
+      <TopBuilding />
       <StaffTeam />
-      <Testimonial />
+      <Partner />
     </>
   );
 };

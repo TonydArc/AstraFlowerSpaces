@@ -26,45 +26,45 @@ const About: React.FC = () => {
               background: 'linear-gradient(rgba(255, 255, 255, .8), rgba(255, 255, 255, .8)), url(img/about-img-1.png)',
             }}
           >
-            <h5 className="section-about-title pe-3">About Us</h5>
+            <h5 className="section-about-title pe-3">Về chúng tôi</h5>
             <h1 className="mb-4">
-              Welcome to <span className="text-primary">AstraFlowerSpaces</span>
+              Chào mừng đến <span className="text-primary">AstraFlowerSpaces</span>
             </h1>
             <p className="mb-4">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, dolorum, doloribus sunt dicta, officia voluptatibus libero necessitatibus natus impedit quam ullam assumenda? Id atque iste consectetur. Commodi odit ab saepe!
+              AstraFlowerSpaces là một không gian văn phòng cho thuê hiện đại và chuyên nghiệp, được thiết kế nhằm mang lại trải nghiệm làm việc hiệu quả và thoải mái cho các doanh nghiệp và tổ chức. Với phương châm cung cấp giải pháp không gian làm việc linh hoạt, AstraFlowerSpaces tập trung vào việc tạo ra môi trường làm việc sáng tạo, thân thiện và đầy đủ tiện ích.
             </p>
             <p className="mb-4">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium quos voluptatem suscipit neque enim, doloribus ipsum rem eos distinctio, dignissimos nisi saepe nulla? Libero numquam perferendis provident placeat molestiae quia?
+            AstraFlowerSpaces nằm tại các vị trí chiến lược của thành phố, giúp doanh nghiệp dễ dàng tiếp cận khách hàng, đối tác, và các tiện ích xung quanh. Điều này giúp doanh nghiệp tối ưu hóa thời gian di chuyển và tạo thuận lợi cho các hoạt động kinh doanh.
             </p>
             <div className="row gy-2 gx-4 mb-4">
               <div className="col-sm-6">
                 <p className="mb-0">
-                  <i className="fa fa-arrow-right text-primary me-2"></i>First Class Flights
+                  <i className="fa fa-arrow-right text-primary me-2"></i>Vị trí đắc địa
                 </p>
               </div>
               <div className="col-sm-6">
                 <p className="mb-0">
-                  <i className="fa fa-arrow-right text-primary me-2"></i>Handpicked Hotels
+                  <i className="fa fa-arrow-right text-primary me-2"></i>Không gian đa dạng, linh hoạt
                 </p>
               </div>
               <div className="col-sm-6">
                 <p className="mb-0">
-                  <i className="fa fa-arrow-right text-primary me-2"></i>5 Star Accommodations
+                  <i className="fa fa-arrow-right text-primary me-2"></i>Tiện ích cao cấp
                 </p>
               </div>
               <div className="col-sm-6">
                 <p className="mb-0">
-                  <i className="fa fa-arrow-right text-primary me-2"></i>Latest Model Vehicles
+                  <i className="fa fa-arrow-right text-primary me-2"></i>Giá cả cạnh tranh
                 </p>
               </div>
               <div className="col-sm-6">
                 <p className="mb-0">
-                  <i className="fa fa-arrow-right text-primary me-2"></i>150 Premium City Tours
+                  <i className="fa fa-arrow-right text-primary me-2"></i>Dịch vụ hỗ trợ chuyên nghiệp
                 </p>
               </div>
               <div className="col-sm-6">
                 <p className="mb-0">
-                  <i className="fa fa-arrow-right text-primary me-2"></i>24/7 Service
+                  <i className="fa fa-arrow-right text-primary me-2"></i>Môi trường làm việc sáng tạo
                 </p>
               </div>
             </div>

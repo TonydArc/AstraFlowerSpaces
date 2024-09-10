@@ -1270,3 +1270,18 @@
     -webkit-box-orient: vertical;
 }
 
+.image-scroll-container {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 1rem;
+  }
+  
+  .image-scroll-container .d-flex {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+  
+  .image-scroll-container .p-2 {
+    flex: 0 0 auto;
+  }
+  
