@@ -40,6 +40,8 @@ const BookingForm: React.FC = () => {
     const { id } = useParams<{ id: string }>();
     const [office, setOffice] = useState<Office | null>(null);
     const [customerid, setCustomerID] = useState<number | null>(null);
+    const [fullname, setFullName] = useState<string>("");
+    const [email, setEmail] = useState<string>("");
     const [additionalServices, setAdditionalServices] = useState<AdditionalService[]>([]);
     const [startDate, setStartDate] = useState<string>(new Date().toISOString().slice(0, 10)); // Format YYYY-MM-DD
     const [endDate, setEndDate] = useState<string>(new Date().toISOString().slice(0, 10)); // Format YYYY-MM-DD
@@ -101,8 +103,10 @@ const BookingForm: React.FC = () => {
             try {
                 const data = await getProfile();
                 setCustomerID(data.CustomerID);
+                setFullName(data.FullName);
+                setEmail(data.Email)
             } catch (error) {
-                alert(error);
+                console.log(error);
             }
         }
 
@@ -199,7 +203,7 @@ const BookingForm: React.FC = () => {
 
     return (
         <>
-            <Header title="Booking Form" path="Booking" />
+            <Header title="Book Văn Phòng" path="Booking" />
 
             {/* Office Booking Start */}
             <div className="container-fluid packages booking py-5">
@@ -216,7 +220,7 @@ const BookingForm: React.FC = () => {
                                     />
                                     <div className="packages-info d-flex border border-start-0 border-end-0 position-absolute bottom-0 start-0 w-100 z-index-5">
                                         <small className="flex-fill text-center border-end py-2"><i className="fa fa-map-marker-alt me-2"></i>{office.Address}</small>
-                                        <small className="flex-fill text-center border-end py-2"><i className="fa fa-tag me-2"></i>{office.ServiceName}</small>
+                                        {/* <small className="flex-fill text-center border-end py-2"><i className="fa fa-tag me-2"></i>{office.ServiceName}</small> */}
                                         <small className="flex-fill text-center py-2"><i className="fa fa-building me-2"></i>{office.TypeName}</small>
                                     </div>
                                     <div className="packages-price py-2 px-4">{formatPrice(office.Price.toLocaleString())}/Ngày</div>
@@ -248,9 +252,9 @@ const BookingForm: React.FC = () => {
                         {/* Booking form */}
                         <div className="col-lg-6 d-flex align-items-stretch">
                             <div className="form-container w-100">
-                                <h1 className="text-white mb-3">Book Your Office</h1>
+                                <h1 className="text-white mb-3">Đặt văn phòng của bạn</h1>
                                 <p className="text-white mb-4">
-                                    Get <span className="text-warning">50% Off</span> On Your First Booking. Hurry Up!
+                                    Nhận ngay <span className="text-warning">ưu đãi</span> bất ngờ. Nhanh lên!
                                 </p>
                                 <form onSubmit={handleBook}>
                                     <div className="row g-3">
@@ -258,22 +262,26 @@ const BookingForm: React.FC = () => {
                                             <div className="form-floating">
                                                 <input
                                                     type="text"
+                                                    value={fullname}
                                                     className="form-control bg-white border-0"
                                                     id="name"
-                                                    placeholder="Your Name"
+                                                    placeholder="Họ tên"
+                                                    disabled
                                                 />
-                                                <label htmlFor="name">Your Name</label>
+                                                <label htmlFor="name">Họ tên</label>
                                             </div>
                                         </div>
                                         <div className="col-md-6">
                                             <div className="form-floating">
                                                 <input
                                                     type="email"
+                                                    value={email}
                                                     className="form-control bg-white border-0"
                                                     id="email"
-                                                    placeholder="Your Email"
+                                                    placeholder="Email"
+                                                    disabled
                                                 />
-                                                <label htmlFor="email">Your Email</label>
+                                                <label htmlFor="email">Email</label>
                                             </div>
                                         </div>
                                         <div className="col-md-6">
@@ -285,7 +293,7 @@ const BookingForm: React.FC = () => {
                                                     value={startDate}
                                                     onChange={(e) => setStartDate(e.target.value)}
                                                 />
-                                                <label htmlFor="startDate">Start Date</label>
+                                                <label htmlFor="startDate">Ngày bắt đầu thuê</label>
                                             </div>
                                         </div>
                                         <div className="col-md-6">
@@ -297,7 +305,7 @@ const BookingForm: React.FC = () => {
                                                     value={endDate}
                                                     onChange={(e) => setEndDate(e.target.value)}
                                                 />
-                                                <label htmlFor="endDate">End Date</label>
+                                                <label htmlFor="endDate">Ngày kết thúc thuê</label>
                                             </div>
                                         </div>
                                         <div className="col-12">
@@ -329,7 +337,7 @@ const BookingForm: React.FC = () => {
                                             </div>
                                         </div> */}
                                         <div className="col-12">
-                                            <button className="btn btn-primary text-white w-100 py-3" type="submit">Book Now</button>
+                                            <button className="btn btn-primary text-white w-100 py-3" type="submit">Book Ngay</button>
                                         </div>
                                         <SuccessToast
                                             message="Booking thành công"

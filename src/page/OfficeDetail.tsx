@@ -72,7 +72,7 @@ const OfficeDetail: React.FC = () => {
         if (token) {
             navigate(`/booking/${id}`)
         } else {
-            setError("Vui lòng Login để book");
+            setError("Vui lòng đăng nhập để book");
             handelErrorToast();
         }
     }
@@ -94,11 +94,11 @@ const OfficeDetail: React.FC = () => {
                 fetchCmt(); // Gọi lại fetch comment sau khi gửi thành công
 
             } catch {
-                setError("Comment thất bại");
+                setError("Review thất bại");
                 handelErrorToast();
             }
         } else {
-            setError("Vui Lòng Login trước khi comment");
+            setError("Vui Lòng đăng nhập trước khi review");
             handelErrorToast();
         }
     };
@@ -168,7 +168,7 @@ const OfficeDetail: React.FC = () => {
 
     return (
         <>
-            <Header path='Detail' title='Office Detail'></Header>
+            <Header path='Detail' title='Chi Tiết'></Header>
 
             <div className="section" style={{ marginTop: "75px", marginBottom: "75px" }}>
                 <div className="container" style={{ marginBottom: "100px" }}>
@@ -185,11 +185,11 @@ const OfficeDetail: React.FC = () => {
 
                                 <div className="carousel-inner rounded">
                                     <div className="carousel-item active">
-                                        <img src={`https://res.cloudinary.com/dbsou9jps/image/upload/${office?.ImgURL}`} style={{height: "500px"}} className="d-block w-100 " alt="img" />
+                                        <img src={`https://res.cloudinary.com/dbsou9jps/image/upload/${office?.ImgURL}`} style={{ height: "500px" }} className="d-block w-100 " alt="img" />
                                     </div>
                                     {thumbnails.map((thumbnail, index) => (
                                         <div key={index} className="carousel-item">
-                                            <img src={`https://res.cloudinary.com/dbsou9jps/image/upload/${thumbnail}`} style={{height: "500px"}}  className="d-block w-100 " alt={`img-${index}`} />
+                                            <img src={`https://res.cloudinary.com/dbsou9jps/image/upload/${thumbnail}`} style={{ height: "500px" }} className="d-block w-100 " alt={`img-${index}`} />
                                         </div>
                                     ))}
                                 </div>
@@ -206,16 +206,21 @@ const OfficeDetail: React.FC = () => {
                         </div>
 
                         <div className="col-lg-4">
-                            <h2 className="heading text-primary">{office?.OfficeName}</h2>
-                            <p className="meta">{office?.Address}</p>
-                            <p className="meta">{formatPrice(office?.Price)}/Ngày</p>
-                            <p className="meta">Loại: {office?.TypeName}</p>
+                            <h2 className="text-primary fw-bold mb-3">{office?.OfficeName}</h2>
+                            <p className="text-muted mb-2"><i className="bi bi-geo-alt-fill"></i> {office?.Address}</p>
+                            <p className="text-success mb-2">Giá: {formatPrice(office?.Price)}/Ngày</p>
+                            <p className="text-secondary mb-2">Loại: {office?.TypeName}</p>
+                            {/* <p className="text-muted mb-2">{office?.ServiceName}</p> */}
                             <p className="text-black-50">
                                 {office?.Description}
                             </p>
-
-                            <a onClick={(e) => handleBook(e, office?.OfficeID)} style={{ width: "100%", marginTop: "30px" }} href={`/booking/${office?.OfficeID}`} className="btn btn-primary rounded-pill py-2 px-4">Book</a>
-
+                            <a
+                                onClick={(e) => handleBook(e, office?.OfficeID)}
+                                href={`/booking/${office?.OfficeID}`}
+                                className="btn btn-primary w-100 rounded-pill py-2 mt-3"
+                            >
+                                Book
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -226,7 +231,7 @@ const OfficeDetail: React.FC = () => {
                         <div className="col-lg-10">
                             <div className="card" style={{ padding: "20px" }}>
                                 <div className="p-2">
-                                    <h6>Comments</h6>
+                                    <h6> Review</h6>
                                 </div>
                                 {/* write cmt */}
                                 <div className="mt-3 d-flex align-items-center p-2">
@@ -237,13 +242,13 @@ const OfficeDetail: React.FC = () => {
                                         <input
                                             type="text"
                                             className="form-control"
-                                            placeholder="Enter your comment..."
+                                            placeholder="Hãy để lại review của bạn"
                                             aria-label="Enter your comment"
                                             onChange={handleCmt}
                                             value={cmt}
                                         />
                                         <button onClick={handleSend} className="btn btn-primary" type="button">
-                                            Send
+                                            Gửi
                                         </button>
                                     </div>
                                 </div>
@@ -269,7 +274,7 @@ const OfficeDetail: React.FC = () => {
                             </div>
 
                             <SuccessToast
-                                message="Comment thành công"
+                                message="Review thành công"
                                 show={showToast}
                                 onClose={() => setShowToast(false)}
                             />

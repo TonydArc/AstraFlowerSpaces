@@ -13,12 +13,12 @@ const PageNotFound: React.FC = () => {
             <div className="col-lg-6">
               <i className="bi bi-exclamation-triangle display-1 text-primary"></i>
               <h1 className="display-1">404</h1>
-              <h1 className="mb-4 text-dark">Page Not Found</h1>
+              <h1 className="mb-4 text-dark">Trang không được tìm thấy</h1>
               <p className="mb-4 text-dark">
-                We’re sorry, the page you have looked for does not exist in our website! Maybe go to our home page or try to use a search?
+                Chúng tôi xin lỗi nhưng trang này không được tìm thấy.Vui lòng quay lại home
               </p>
               <a className="btn btn-primary rounded-pill py-3 px-5" href="/">
-                Go Back To Home
+                Quay lại home
               </a>
             </div>
           </div>

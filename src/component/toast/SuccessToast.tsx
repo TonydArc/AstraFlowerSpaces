@@ -25,7 +25,7 @@ const SuccessToast: React.FC<ToastProps> = ({ message, show, onClose, delay = 30
                     <small className='me-2'>
                         <i className="fas fa-check-circle" style={{ color: "#72fd8e", fontSize: "20px" }}></i>
                     </small>
-                    <strong className="me-auto">Notification</strong>
+                    <strong className="me-auto">Thông Báo</strong>
                     <button type="button" className="btn-close" aria-label="Close" onClick={onClose}></button>
                 </div>
                 <div className="toast-body text-start">

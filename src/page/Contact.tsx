@@ -4,21 +4,21 @@ import Header from '../component/Header';
 const Contact: React.FC = () => {
   return (
     <>
-      <Header title="Contact Us" path="Contact" />
+      <Header title="Liên Hệ" path="Contact" />
 
       {/* Contact Start */}
       <div className="container-fluid contact bg-light py-5">
         <div className="container py-5">
           <div className="mx-auto text-center mb-5" style={{ maxWidth: '900px' }}>
-            <h5 className="section-title px-3">Contact Us</h5>
-            <h1 className="mb-0">Contact For Any Query</h1>
+            <h5 className="section-title px-3">Liên hệ với chúng tôi</h5>
+            <h1 className="mb-0">Liên hệ nếu có bất kỳ câu hỏi nào</h1>
           </div>
           <div className="row g-5 align-items-center">
             <div className="col-lg-4">
               <div className="bg-white rounded p-4">
                 <div className="text-center mb-4">
                   <i className="fa fa-map-marker-alt fa-3x text-primary"></i>
-                  <h4 className="text-primary">Address</h4>
+                  <h4 className="text-primary">Địa chỉ</h4>
                   <p className="mb-0"> <br /> Wandenreich</p>
                 </div>
                 <div className="text-center mb-4">
@@ -36,38 +36,38 @@ const Contact: React.FC = () => {
               </div>
             </div>
             <div className="col-lg-8">
-              <h3 className="mb-2">Send us a message</h3>
+              <h3 className="mb-2">Gửi chúng tôi lời nhắn</h3>
               <p className="mb-4">
-                The contact form is currently inactive. Get a functional and working contact form with Ajax & PHP in a few minutes. Just copy and paste the files, add a little code and you're done.{' '}
+                Best Scam
               </p>
               <form>
                 <div className="row g-3">
                   <div className="col-md-6">
                     <div className="form-floating">
                       <input type="text" className="form-control border-0" id="name" placeholder="Your Name" />
-                      <label htmlFor="name">Your Name</label>
+                      <label htmlFor="name">Họ tên của bạn</label>
                     </div>
                   </div>
                   <div className="col-md-6">
                     <div className="form-floating">
                       <input type="email" className="form-control border-0" id="email" placeholder="Your Email" />
-                      <label htmlFor="email">Your Email</label>
+                      <label htmlFor="email">Email của bạn</label>
                     </div>
                   </div>
                   <div className="col-12">
                     <div className="form-floating">
                       <input type="text" className="form-control border-0" id="subject" placeholder="Subject" />
-                      <label htmlFor="subject">Subject</label>
+                      <label htmlFor="subject">Vấn đề</label>
                     </div>
                   </div>
                   <div className="col-12">
                     <div className="form-floating">
                       <textarea className="form-control border-0" placeholder="Leave a message here" id="message" style={{ height: '160px' }}></textarea>
-                      <label htmlFor="message">Message</label>
+                      <label htmlFor="message">Lời nhắn</label>
                     </div>
                   </div>
                   <div className="col-12">
-                    <button className="btn btn-primary w-100 py-3" type="submit">Send Message</button>
+                    <button className="btn btn-primary w-100 py-3" type="submit">Gửi</button>
                   </div>
                 </div>
               </form>

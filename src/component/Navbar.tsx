@@ -17,7 +17,7 @@ const NavBar: React.FC = () => {
                 <div className="collapse navbar-collapse" id="navbarCollapse">
                     <div className="navbar-nav ms-auto py-0">
                         <a href="/" className="nav-item nav-link active">Home</a>
-                        <a href="/contact" className="nav-item nav-link">Contact</a>
+                        <a href="/contact" className="nav-item nav-link">Liên Hệ</a>
                         {/* <a href="packages.html" className="nav-item nav-link">Packages</a>
                         <a href="blog.html" className="nav-item nav-link">Blog</a>
                         <div className="nav-item dropdown">

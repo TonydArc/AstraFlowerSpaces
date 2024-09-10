@@ -25,7 +25,7 @@ const ErrorToast: React.FC<ToastProps> = ({ message, show, onClose, delay = 3000
                     <small className='me-2'>
                         <i className="far fa-times-circle" style={{color: "#ff0000", fontSize: "20px"}}></i>
                     </small>
-                    <strong className="me-auto">Notification</strong>
+                    <strong className="me-auto">Thông Báo</strong>
                     <button type="button" className="btn-close" aria-label="Close" onClick={onClose}></button>
                 </div>
                 <div className="toast-body text-start">

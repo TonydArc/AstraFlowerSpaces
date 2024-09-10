@@ -80,10 +80,10 @@ const TopBar: React.FC = () => {
             {!accessToken && (
               <>
                 <a href="/signup">
-                  <small className="me-3 text-light"><i className="fa fa-user me-2"></i>Sign Up</small>
+                  <small className="me-3 text-light"><i className="fa fa-user me-2"></i>Đăng Kí</small>
                 </a>
                 <a href="/login">
-                  <small className="me-3 text-light"><i className="fa fa-sign-in-alt me-2"></i>Login</small>
+                  <small className="me-3 text-light"><i className="fa fa-sign-in-alt me-2"></i>Đăng Nhập</small>
                 </a>
               </>
             )}
@@ -93,19 +93,19 @@ const TopBar: React.FC = () => {
                   <small><i className="fa  fa-user me-2"></i> {userName}</small>
                 </a>
                 <div className="dropdown-menu rounded">
-                  <a href="/profile" className="dropdown-item"><i className="fas fa-user-alt me-2"></i> My Profile</a>
+                  <a href="/profile" className="dropdown-item"><i className="fas fa-user-alt me-2"></i> Thông Tin</a>
                   {/* <a href="/profile" className="dropdown-item"><i className="fas fa-tasks me-2"></i> My Booking</a> */}
-                  <a href="" onClick={handleLogOut} className="dropdown-item"><i className="fas fa-power-off me-2"></i> Log Out</a>
+                  <a href="" onClick={handleLogOut} className="dropdown-item"><i className="fas fa-power-off me-2"></i> Đăng xuất</a>
                 </div>
               </div>
             )}
             <SuccessToast
-              message="Log Out thành công"
+              message="Đăng xuất thành công"
               show={showToast}
               onClose={() => setShowToast(false)}
             />
             <ErrorToast
-              message="log Out thất bại"
+              message="Đăng xuất thất bại"
               show={showError}
               onClose={() => setShowToast(false)}
             />

@@ -131,14 +131,14 @@ const OfficeList: React.FC = () => {
 
     return (
         <>
-            <Header path='Office List' title='Đặt ngay nào !' />
+            <Header path='Office List' title='Đặt Ngay Nào !' />
 
             <div className="container-fluid packages py-5">
                 <div className="container py-5">
 
                     <div className="mx-auto text-center mb-5" style={{ maxWidth: "900px" }}>
                         <h5 className="section-title px-3">Offices</h5>
-                        <h1 className="mb-0">Awesome Packages</h1>
+                        <h1 className="mb-0">Các văn phòng cho thuê hiện đại</h1>
                         <div className="d-flex justify-content-between align-items-center mt-4">
 
                             <select style={{ flexGrow: 1, maxWidth: "200px" }}  className="form-select me-2" onChange={(e) => setSortOption(e.target.value)}>
@@ -197,7 +197,7 @@ const OfficeList: React.FC = () => {
                     </div>
 
                     <ErrorToast
-                        message="Vui lòng Login để book"
+                        message="Vui lòng đăng nhập để book"
                         show={showError}
                         onClose={() => setErrorToast(false)}
                     />
