@@ -164,6 +164,8 @@ const OfficeDetail: React.FC = () => {
         return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND', minimumFractionDigits: 0 }).format(numericPrice);
     };
 
+    const thumbnails = office?.ThumbnailURL ? office.ThumbnailURL.split(',') : [];
+
     return (
         <>
             <Header path='Detail' title='Office Detail'></Header>
@@ -172,12 +174,37 @@ const OfficeDetail: React.FC = () => {
                 <div className="container" style={{ marginBottom: "100px" }}>
                     <div className="row justify-content-between">
                         <div className="col-lg-7">
-                            <div className="img-property-slide-wrap">
-                                <div className="img-property-slide">
-                                    <img src="https://img.lovepik.com/photo/50101/9784.jpg_wh860.jpg" alt="Image" className="img-fluid" />
+                            <div id="productCarousel" className="carousel slide" data-bs-ride="carousel">
+                                <div className="carousel-indicators">
+                                    <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
+                                    {thumbnails.map((_, index) => (
+                                        <button key={index} type="button" data-bs-target="#productCarousel" data-bs-slide-to={index + 1} aria-label={`Slide ${index + 2}`}></button>
+                                    ))}
                                 </div>
+
+
+                                <div className="carousel-inner rounded">
+                                    <div className="carousel-item active">
+                                        <img src={`https://res.cloudinary.com/dbsou9jps/image/upload/${office?.ImgURL}`} style={{height: "500px"}} className="d-block w-100 " alt="img" />
+                                    </div>
+                                    {thumbnails.map((thumbnail, index) => (
+                                        <div key={index} className="carousel-item">
+                                            <img src={`https://res.cloudinary.com/dbsou9jps/image/upload/${thumbnail}`} style={{height: "500px"}}  className="d-block w-100 " alt={`img-${index}`} />
+                                        </div>
+                                    ))}
+                                </div>
+
+                                <button className="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
+                                    <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span className="visually-hidden">Previous</span>
+                                </button>
+                                <button className="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
+                                    <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span className="visually-hidden">Next</span>
+                                </button>
                             </div>
                         </div>
+
                         <div className="col-lg-4">
                             <h2 className="heading text-primary">{office?.OfficeName}</h2>
                             <p className="meta">{office?.Address}</p>
