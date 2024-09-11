@@ -33,8 +33,8 @@ const Footer: React.FC = () => {
                   <img src="/icon.png" alt="Icon" style={{ height: '50px', marginRight: '10px', marginBottom: '10px' }} />
                   AstraFlowerSpaces
                 </h1>
-                <p style={{color: 'white'}}>THUỘC TẬP ĐOÀN </p>
-                <a href="#"><i className="fas fa-home me-2"></i> Bitexco Financial Tower Tầng 20</a>
+                <p style={{color: 'white'}}>THUỘC TẬP ĐOÀN LUNAR TEAR</p>
+                <a href="#"><i className="fas fa-home me-2"></i> Bitexco Financial Tower Tầng 13</a>
                 <a href="#"><i className="fas fa-envelope me-2"></i> wandenreich@gmail.com</a>
                 <a href="#"><i className="fas fa-phone me-2"></i> +8888888888</a>
                 {/* <a href="#" className="mb-3"><i className="fas fa-print me-2"></i> +8888888888</a> */}

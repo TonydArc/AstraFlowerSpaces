@@ -215,6 +215,7 @@ const OfficeList: React.FC = () => {
                     <div className="d-flex justify-content-center mt-4">
                         {renderPagination()}
                     </div>
+                    
                 </div>
             </div>
         </>

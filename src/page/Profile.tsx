@@ -46,6 +46,8 @@ const Profile: React.FC = () => {
     const [bookinglist, setBookingList] = useState<Booking[]>([]);
     const [searchTerm, setSearchTerm] = useState<string>('');
     const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc'); // Thay đổi trạng thái sắp xếp
+    const [currentPage, setCurrentPage] = useState<number>(1);
+    const [itemsPerPage] = useState<number>(5); // Số mục trên mỗi trang
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -114,10 +116,69 @@ const Profile: React.FC = () => {
             return sortOrder === 'asc' ? dateA.getTime() - dateB.getTime() : dateB.getTime() - dateA.getTime();
         });
 
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentItems = filteredBookings.slice(indexOfFirstItem, indexOfLastItem);
+
+    const handleClick = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>, pageNumber: number) => {
+        event.preventDefault();
+        setCurrentPage(pageNumber);
+    };
+
+    const renderPagination = () => {
+        const pageNumbers = [];
+        for (let i = 1; i <= Math.ceil(filteredBookings.length / itemsPerPage); i++) {
+            pageNumbers.push(i);
+        }
+        return (
+            <nav aria-label="Page navigation example">
+                <ul className="pagination">
+                    <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
+                        <a className="page-link" href="#" aria-label="Previous" onClick={(e) => handleClick(e, currentPage - 1)}>
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    {pageNumbers.map(number => (
+                        <li key={number} className={`page-item ${number === currentPage ? 'active' : ''}`}>
+                            <a className="page-link" href="#" onClick={(e) => handleClick(e, number)}>
+                                {number}
+                            </a>
+                        </li>
+                    ))}
+                    <li className={`page-item ${currentPage === pageNumbers.length ? 'disabled' : ''}`}>
+                        <a className="page-link" href="#" aria-label="Next" onClick={(e) => handleClick(e, currentPage + 1)}>
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        );
+    };
+
     const formatPrice = (price: string) => {
         const numericPrice = parseFloat(price);
         return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND', minimumFractionDigits: 0 }).format(numericPrice);
     };
+
+    const getBadgeClass = (status: string): string => {
+        switch (status) {
+            case 'Hoàn tất':
+            case 'Xác nhận':
+                return 'bg-success';
+            case 'Đang chờ xác nhận':
+                return 'bg-warning text-dark';
+            case 'Hủy bỏ':
+                return 'bg-danger';
+            default:
+                return 'bg-secondary';
+        }
+    };
+
+    // Define a function to determine if the 'Cancel' button should be disabled
+    const isCancelDisabled = (status: string): boolean => {
+        return status === 'Xác nhận' || status === 'Hủy bỏ';
+    };
+
 
     return (
         <>
@@ -218,8 +279,8 @@ const Profile: React.FC = () => {
                                 </div>
                                 {/* booking list */}
                                 <ul className="list-group">
-                                    {filteredBookings.length > 0 ? (
-                                        filteredBookings.map((booking) => (
+                                    {currentItems.length > 0 ? (
+                                        currentItems.map((booking) => (
                                             <div key={booking.BookingID}>
                                                 <li className="list-group-item d-flex justify-content-between align-items-center">
                                                     <a
@@ -238,33 +299,31 @@ const Profile: React.FC = () => {
                                                                 <p className="fs-4 fw-bold mb-1">{booking.OfficeName}</p>
                                                                 <p className="text-muted mb-0">{booking.Address}</p>
                                                             </div>
+
+
                                                             <div className="col-2 d-flex align-items-center justify-content-center">
                                                                 <p
-                                                                    className={`badge ${booking.Status === "Hoàn tất" || booking.Status === "Xác nhận"
-                                                                        ? "bg-success"
-                                                                        : booking.Status === "Đang chờ xác nhận"
-                                                                            ? "bg-warning text-dark"
-                                                                            : booking.Status === "Hủy bỏ"
-                                                                                ? "bg-danger"
-                                                                                : "bg-secondary"
-                                                                        } p-2 rounded`}
-                                                                    style={{ fontSize: '1rem', marginTop: "15px" }}
+                                                                    className={`badge ${getBadgeClass(booking.Status)} p-2 rounded`}
+                                                                    style={{ fontSize: '1rem', marginTop: '15px' }}
                                                                 >
                                                                     {booking.Status}
                                                                 </p>
                                                             </div>
-                                                            <div className="col-1 d-flex align-items-center justify-content-center">
-                                                                <button
-                                                                    type="button"
-                                                                    className="btn btn-primary"
-                                                                    data-bs-toggle="modal"
-                                                                    data-bs-target={`#CancelModal-${booking.BookingID}`}
-                                                                    disabled={booking.Status === "Xác nhận" || booking.Status === "Hủy bỏ"}
-                                                                >
-                                                                    Hủy
-                                                                </button>
-                                                                <CancelModal BookingID={booking.BookingID} />
-                                                            </div>
+                                                            {booking.Status !== 'Xác nhận' && booking.Status !== 'Hủy bỏ' && (
+                                                                <div className="col-1 d-flex align-items-center justify-content-center">
+                                                                    <button
+                                                                        type="button"
+                                                                        className="btn btn-primary"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target={`#CancelModal-${booking.BookingID}`}
+                                                                        disabled={isCancelDisabled(booking.Status)}
+                                                                    >
+                                                                        Hủy
+                                                                    </button>
+                                                                    <CancelModal BookingID={booking.BookingID} />
+                                                                </div>
+                                                            )}
+
                                                         </div>
                                                     </a>
                                                 </li>
@@ -289,6 +348,11 @@ const Profile: React.FC = () => {
                                         <li className="list-group-item text-center">Hiện không có lịch sử book</li>
                                     )}
                                 </ul>
+
+
+                            </div>
+                            <div className="mt-1 d-flex justify-content-center">
+                                {renderPagination()}
                             </div>
                         </div>
                     </div>
