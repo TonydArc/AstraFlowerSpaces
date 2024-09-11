@@ -6,7 +6,7 @@ const NavBar: React.FC = () => {
             <nav className="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
                 <a href="/" className="navbar-brand p-0">
                     <h1 className="m-0">
-                        <img src="/icon.png" alt="Icon" style={{ height: '100px', marginRight: '10px' }} />
+                        <img src="/icon.png" alt="Icon" style={{ height: '100px', marginRight: '10px', marginBottom: '10px' }} />
                         AstraFlowerSpaces
                     </h1>
                     {/* <img src="img/logo.png" alt="Logo"> */}

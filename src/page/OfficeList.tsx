@@ -3,7 +3,7 @@ import Header from '../component/Header';
 import { getOffices } from '../services/OfficeService';
 import ErrorToast from '../component/toast/ErrorToast';
 import { getAccessToken } from '../services/untils';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 interface Office {
     OfficeID: number;
@@ -23,10 +23,12 @@ const OfficeList: React.FC = () => {
     const [itemsPerPage] = useState(6);
     const [offices, setOffices] = useState<Office[]>([]);
     const [filteredOffices, setFilteredOffices] = useState<Office[]>([]); // Danh sách sau khi lọc và sắp xếp
+    const [searchParams] = useSearchParams();
     const [searchTerm, setSearchTerm] = useState(''); // Lưu từ khóa tìm kiếm
     const [sortOption, setSortOption] = useState(''); // Lưu lựa chọn sắp xếp
     const [showError, setErrorToast] = useState<boolean>(false);
     const navigate = useNavigate();
+    
 
     const handelErrorToast = () => {
         setErrorToast(true);
@@ -42,6 +44,14 @@ const OfficeList: React.FC = () => {
             handelErrorToast();
         }
     }
+
+    useEffect(() => {
+        // Lấy giá trị tìm kiếm từ query parameters
+        const search = searchParams.get('search');
+        if (search) {
+          setSearchTerm(search);
+        }
+      }, [searchParams]);
 
     useEffect(() => {
         const fetchOffices = async () => {

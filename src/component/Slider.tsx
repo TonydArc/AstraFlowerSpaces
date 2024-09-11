@@ -15,7 +15,7 @@ const Slider: React.FC = () => {
             <div className="carousel-caption">
               <div className="p-3" style={{ maxWidth: '900px' }}>
                 <h4 className="text-white text-uppercase fw-bold mb-4" style={{ letterSpacing: '3px' }}>THUÊ VĂN PHÒNG</h4>
-                <h1 className="display-2 text-capitalize text-white mb-4">Tiết kiệm thời gian và công sức</h1>
+                <h2 className="display-2 text-capitalize text-white mb-4">Tiết kiệm thời gian và công sức</h2>
                 <p className="mb-5 fs-5">Chúng tôi hỗ trợ bạn tiết kiệm tối đa thời gian và công sức trong việc tìm kiếm văn phòng lý tưởng.</p>
                 <div className="d-flex align-items-center justify-content-center">
                   {/* <a className="btn-hover-bg btn btn-primary rounded-pill text-white py-3 px-5" href="">Discover Now</a> */}
@@ -28,7 +28,7 @@ const Slider: React.FC = () => {
             <div className="carousel-caption">
               <div className="p-3" style={{ maxWidth: '900px' }}>
                 <h4 className="text-white text-uppercase fw-bold mb-4" style={{ letterSpacing: '3px' }}>THUÊ VĂN PHÒNG</h4>
-                <h1 className="display-2 text-capitalize text-white mb-4">Vị trí đắc địa</h1>
+                <h2 className="display-2 text-capitalize text-white mb-4">Vị trí đắc địa</h2>
                 <p className="mb-5 fs-5">Văn phòng tọa lạc tại những vị trí đắc địa, trung tâm thành phố, thuận tiện cho mọi hoạt động kinh doanh.</p>
                 <div className="d-flex align-items-center justify-content-center">
                   {/* <a className="btn-hover-bg btn btn-primary rounded-pill text-white py-3 px-5" href="">Discover Now</a> */}
@@ -41,7 +41,7 @@ const Slider: React.FC = () => {
             <div className="carousel-caption">
               <div className="p-3" style={{ maxWidth: '900px' }}>
                 <h4 className="text-white text-uppercase fw-bold mb-4" style={{ letterSpacing: '3px' }}>THUÊ VĂN PHÒNG</h4>
-                <h1 className="display-2 text-capitalize text-white mb-4">Giá cả cạnh tranh</h1>
+                <h2 className="display-2 text-capitalize text-white mb-4">Giá cả cạnh tranh</h2>
                 <p className="mb-5 fs-5">Giá thuê hấp dẫn, phù hợp với mọi ngân sách, giúp bạn tối ưu hóa chi phí kinh doanh.</p>
                 <div className="d-flex align-items-center justify-content-center">
                   {/* <a className="btn-hover-bg btn btn-primary rounded-pill text-white py-3 px-5" href="">Discover Now</a> */}
