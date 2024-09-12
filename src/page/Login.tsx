@@ -77,9 +77,8 @@ const Login: React.FC = () => {
                 Password: password
             };
             try {
-                const user = await login(formdata);
+                await login(formdata);
                 handleShowToast();
-                return user;
             } catch {
                 handelErrorToast();
             }

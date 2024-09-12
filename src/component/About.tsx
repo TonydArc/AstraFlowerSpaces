@@ -14,7 +14,7 @@ const About: React.FC = () => {
               }}
             >
               <img
-                src="https://i.pinimg.com/736x/22/d1/1e/22d11e8dcd4662ab144c3bb390ef4282.jpg"
+                src="../src/assets/img/bitexco.jpg"
                 className="img-fluid w-100 h-100"
                 alt="About"
               />

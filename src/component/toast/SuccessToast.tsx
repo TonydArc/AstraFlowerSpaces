@@ -7,7 +7,7 @@ interface ToastProps {
     delay?: number; // thời gian delay trước khi ẩn toast
 }
 
-const SuccessToast: React.FC<ToastProps> = ({ message, show, onClose, delay = 3000 }) => {
+const SuccessToast: React.FC<ToastProps> = ({ message, show, onClose, delay = 2000 }) => {
     useEffect(() => {
         if (show) {
             const timer = setTimeout(() => {

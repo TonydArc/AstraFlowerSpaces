@@ -18,7 +18,7 @@ const Search: React.FC = () => {
       >
         <div className="container">
           <div
-            className="position-relative rounded-pill w-100 mx-auto p-5"
+            className="position-relative rounded-pill w-100 mx-auto p-4"
             style={{ background: 'rgba(19, 53, 123, 0.8)' }}
           >
             <input

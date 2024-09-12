@@ -30,7 +30,7 @@ const Footer: React.FC = () => {
             <div className="col-md-6 col-lg-6 col-xl-4">
               <div className="footer-item d-flex flex-column">
                 <h1 className="m-0" style={{ color: 'white', fontSize: '30px'}}>
-                  <img src="/icon.png" alt="Icon" style={{ height: '50px', marginRight: '10px', marginBottom: '10px' }} />
+                  <img src="/Logo.png" alt="Icon" style={{ height: '50px', marginRight: '10px', marginBottom: '10px' }} />
                   AstraFlowerSpaces
                 </h1>
                 <p style={{color: 'white'}}>THUỘC TẬP ĐOÀN LUNAR TEAR</p>
@@ -105,9 +105,10 @@ const Footer: React.FC = () => {
           e.preventDefault();
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }}
+        id='go-to-top'
         className="btn btn-primary btn-outline-primary btn-md-square back-to-top"
       >
-        <i className="bi bi-arrow-up"></i>
+        <i style={{color: 'white'}} className="bi bi-arrow-up"></i>
       </a>
     </>
   );
