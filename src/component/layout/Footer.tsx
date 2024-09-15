@@ -30,7 +30,7 @@ const Footer: React.FC = () => {
             <div className="col-md-6 col-lg-6 col-xl-4">
               <div className="footer-item d-flex flex-column">
                 <h1 className="m-0" style={{ color: 'white', fontSize: '30px'}}>
-                  <img src="/Logo.png" alt="Icon" style={{ height: '50px', marginRight: '10px', marginBottom: '10px' }} />
+                  <img src="/lily.png" alt="Icon" style={{ height: '75px', marginRight: '10px', marginBottom: '10px' }} />
                   AstraFlowerSpaces
                 </h1>
                 <p style={{color: 'white'}}>THUỘC TẬP ĐOÀN LUNAR TEAR</p>

@@ -183,6 +183,7 @@ const BookingForm: React.FC = () => {
       StartDate: startDate,
       EndDate: endDate,
       Status: "Đang chờ xác nhận",
+      Method: "Thanh toán sau khi hoàn tất thuê",
       AdditionalServices: selectedServices,
     };
 

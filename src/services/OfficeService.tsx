@@ -46,6 +46,7 @@ export async function bookingOffice(formdata: {
     'StartDate': string,
     'EndDate': string,
     'Status': string,
+    'Method': string,
     'AdditionalServices': string
 }) {
     const token = getAccessToken();

@@ -10,6 +10,7 @@ import ErrorToast from "../component/toast/ErrorToast";
 const SignUp: React.FC = () => {
   const [name, setInputName] = useState("");
   const [email, setInputEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [password, setInputPassword] = useState("");
   const [confirmpassword, setConfirmPassword] = useState("");
   const cookies = new Cookies();
@@ -20,6 +21,7 @@ const SignUp: React.FC = () => {
   const [errors, setErrors] = useState<{
     name?: string;
     email?: string;
+    phone?: string;
     password?: string;
     confirmpassword?: string;
   }>({});
@@ -46,6 +48,10 @@ const SignUp: React.FC = () => {
     setInputEmail(event.target.value);
   };
 
+  const handleChangePhone = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setPhone(event.target.value);
+  };
+
   const handleChangePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputPassword(event.target.value);
   };
@@ -65,30 +71,43 @@ const SignUp: React.FC = () => {
     const validationErrors: {
       name?: string;
       email?: string;
+      phone?: string;
       password?: string;
       confirmpassword?: string;
     } = {};
-
+  
     if (!name) {
       validationErrors.name = "Yêu cầu nhập họ tên";
     }
+  
     if (!email) {
       validationErrors.email = "Yêu cầu nhập email";
     } else if (!validateEmail(email)) {
       validationErrors.email = "Email không hợp lệ";
     }
+  
+    if (!phone) {
+      validationErrors.phone = "Yêu cầu nhập số điện thoại";
+    } else if (phone.length !== 10) {
+      validationErrors.phone = "Số điện thoại phải có 10 chữ số";
+    } else if (!/^\d+$/.test(phone)) {
+      validationErrors.phone = "Số điện thoại chỉ được chứa ký tự số";
+    }
+  
     if (!password) {
       validationErrors.password = "Yêu cầu nhập mật khẩu";
     } else if (password.length < 8) {
       validationErrors.password = "Mật khẩu phải có ít nhất 8 ký tự";
     }
+  
     if (password !== confirmpassword) {
       validationErrors.confirmpassword = "Mật khẩu không trùng khớp";
     }
-
+  
     setErrors(validationErrors);
     return Object.keys(validationErrors).length === 0;
   };
+  
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -97,6 +116,7 @@ const SignUp: React.FC = () => {
         Fullname: name,
         Email: email,
         Password: password,
+        Phone: phone
       };
       try {
         await register(formdata);
@@ -165,6 +185,27 @@ const SignUp: React.FC = () => {
                           />
                           {errors.email && (
                             <div className="text-danger">{errors.email}</div>
+                          )}
+                        </div>
+                      </div>
+
+                      {/* Phone input */}
+                      <div className="d-flex flex-row align-items-center mb-4">
+                        <i
+                          className="fas fa-mobile fa-lg me-3 fa-fw mb-1"
+                          style={{ fontSize: "30px" }}
+                        ></i>
+                        <div className="form-outline flex-fill mb-0">
+                          <input
+                            type="tel"
+                            onChange={handleChangePhone}
+                            value={phone}
+                            id="form3Example3c"
+                            className="form-control"
+                            placeholder="Số điện thoại của bạn"
+                          />
+                          {errors.phone && (
+                            <div className="text-danger">{errors.phone}</div>
                           )}
                         </div>
                       </div>

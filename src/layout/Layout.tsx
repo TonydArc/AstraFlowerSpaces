@@ -1,9 +1,10 @@
 
 import React from 'react';
-import TopBar from '../component/Topbar';
-import NavBar from '../component/Navbar';
-import Footer from '../component/Footer';
+
+import NavBar from '../component/layout/Navbar';
+import Footer from '../component/layout/Footer';
 import { Outlet } from 'react-router-dom';
+import TopBar from '../component/layout/Topbar';
 
 const Layout: React.FC = () => {
   return (

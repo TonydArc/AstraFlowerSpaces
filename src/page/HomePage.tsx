@@ -1,13 +1,13 @@
 
 import React, { useEffect } from 'react';
-import Slider from '../component/Slider';
-import Search from '../component/Search';
-import About from '../component/About';
-import Services from '../component/Services';
-import StaffTeam from '../component/StaffTeam';
+import Slider from '../component/home/Slider';
+import Search from '../component/home/Search';
+import About from '../component/home/About';
+import Services from '../component/home/Services';
+import StaffTeam from '../component/home/StaffTeam';
 import { getProfile } from '../services/UserService';
-import Partner from '../component/Partner';
-import TopBuilding from '../component/TopBuilding';
+import Partner from '../component/home/Partner';
+import TopBuilding from '../component/home/TopBuilding';
 
 
 const Home: React.FC = () => {

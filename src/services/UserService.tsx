@@ -11,6 +11,7 @@ export async function register(formdata: {
     'Fullname': string,
     'Email': string,
     'Password': string,
+    'Phone': string
 }) {
     const users = await axios.post(API_URL + 'register', formdata);
     return users;
