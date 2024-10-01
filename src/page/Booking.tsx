@@ -224,7 +224,11 @@ const BookingForm: React.FC = () => {
   };
 
   if (!office) {
-    return (<><Header title="Book Văn Phòng" path="Booking" /> <Spinner/></>); // Hiển thị trạng thái đang tải khi dữ liệu đang được lấy
+    return (
+      <>
+        <Header title="Book Văn Phòng" path="Booking" /> <Spinner />
+      </>
+    ); // Hiển thị trạng thái đang tải khi dữ liệu đang được lấy
   }
 
   return (
@@ -349,7 +353,7 @@ const BookingForm: React.FC = () => {
                           {additionalServices.map((service) => (
                             <li
                               key={service.AdditionalServiceID}
-                              className="list-group-item"
+                              className="list-group-item "
                             >
                               <input
                                 className="form-check-input me-1"
@@ -362,7 +366,8 @@ const BookingForm: React.FC = () => {
                                   )
                                 }
                               />
-                              {service.ServiceName} - {service.Price} VND
+                              {service.ServiceName} :{" "}
+                              {formatPrice(service.Price)}
                             </li>
                           ))}
                         </ul>

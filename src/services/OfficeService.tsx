@@ -16,7 +16,6 @@ export async function getOffices() {
 }
 
 // find office 
-
 export async function getOfficeById(id: number) {
     try {
         const products = await axios.get(API_URL + `office/` + id)
@@ -28,7 +27,6 @@ export async function getOfficeById(id: number) {
 }
 
 // get additionalservices
-
 export async function getadditionalServices() {
     try {
         const products = await axios.get(API_URL + `additionalservices`,)
@@ -56,6 +54,7 @@ export async function bookingOffice(formdata: {
     return book;
 }
 
+// get ownbook
 export async function getcustomerbook(id: number) {
     const token = getAccessToken();
     try {
@@ -69,6 +68,7 @@ export async function getcustomerbook(id: number) {
     }
 }
 
+// cancel book
 export async function cancelbook(id: number) {
     const token = getAccessToken();
     try {

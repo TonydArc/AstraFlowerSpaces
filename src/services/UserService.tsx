@@ -1,8 +1,6 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+
 import axios from 'axios';
 import { getAccessToken, removeToken, setToken } from './untils';
-import Cookies from 'universal-cookie';
-import { data } from 'jquery';
 
 const API_URL = 'http://127.0.0.1:8000/api/auth/';
 const API_CUS = 'http://127.0.0.1:8000/api/';
