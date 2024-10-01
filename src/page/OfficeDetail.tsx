@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { SetStateAction, useEffect, useState } from 'react';
 import Header from '../component/Header';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -35,9 +36,22 @@ interface Comments {
 
 const OfficeDetail: React.FC = () => {
     const { id } = useParams<{ id: string }>();
-    const [office, setOffice] = useState<Office | null>(null);
+    const [office, setOffice] = useState<Office>(
+        {
+            OfficeID: 0,
+            OfficeName: '',
+            Description: '',
+            Address: '',
+            Price: '',
+            ServiceName: '',
+            Status: '',
+            ImgURL: '',
+            ThumbnailURL: null,
+            TypeName: ''
+        }
+    );
     const [cmtlist, setCmtlist] = useState<Comments[]>([]);
-    const [customerid, setCustomerID] = useState<number | null>(null);
+    const [customerid, setCustomerID] = useState<number>(0);
     const [cmt, setCmt] = useState('');
 
     const [error, setError] = useState('');

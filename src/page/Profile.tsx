@@ -39,7 +39,14 @@ interface Booking {
 }
 
 const Profile: React.FC = () => {
-  const [profile, setProfile] = useState<Profile | null>(null);
+  const [profile, setProfile] = useState<Profile>({
+    UserID: 0,
+    CustomerID: 0,
+    FullName: '',
+    Email: '',
+    Phone: '',
+    Address: ''
+  });
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const [showToast, setShowToast] = useState<boolean>(false);
   const [showError, setShowError] = useState<boolean>(false);

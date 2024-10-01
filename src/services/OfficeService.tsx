@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import axios from 'axios';
 import { getAccessToken } from './untils';
 
@@ -45,7 +46,7 @@ export async function bookingOffice(formdata: {
     'EndDate': string,
     'Status': string,
     'Method': string,
-    'AdditionalServices': string
+    'AdditionalServices': any
 }) {
     const token = getAccessToken();
     const book = axios.post(API_URL + 'booking', formdata, {
